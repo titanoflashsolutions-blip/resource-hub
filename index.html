@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Language Resource Hub 2.0 — Aprende Coreano, Japonés y Francés</title>
+  <meta name="description" content="El hub definitivo para aprender idiomas. Kits gratis, tutores nativos, apps recomendadas y audio nativo. Coreano, Japonés y Francés." />
+  <meta property="og:title" content="Language Resource Hub 2.0" />
+  <meta property="og:description" content="20 recursos premium para aprender idiomas. Kits PDF gratis, tutores Preply y audio nativo." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     URGENCY BANNER (Growth Marketing)
+     ═══════════════════════════════════════════════ -->
+<div id="urgency-banner" class="urgency-banner">
+  <div class="container urgency-inner">
+    <span>🔥 <strong>Oferta Flash:</strong> Reserva tu clase de prueba en Preply con descuento especial.</span>
+    <span class="countdown">Expira en: <span id="countdown-timer">02:00:00</span></span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     NAVBAR
+     ═══════════════════════════════════════════════ -->
+<nav class="navbar" role="navigation" aria-label="Navegación principal">
+  <div class="container navbar-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon">🌐</div>
+      <span class="logo-text">Language<span>Hub</span> 2.0</span>
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="#recursos">Recursos</a></li>
+      <li><a href="#audio">Audio Nativo</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+      <li>
+        <a href="https://preply.sjv.io/c/7528742/1987575/24422"
+           target="_blank" rel="noopener" class="nav-cta">
+          🎓 Tutor Gratis
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════
+     HERO SECTION
+     ═══════════════════════════════════════════════ -->
+<header class="hero" role="banner">
+  <div class="container">
+
+    <div class="hero-badge">
+      <span class="dot"></span>
+      20 Recursos · Audio Nativo · Quiz IA · Afiliados Premium
+    </div>
+
+    <h1>
+      El Hub Definitivo para<br />
+      Aprender <span class="grad-gold">Coreano</span>,
+      <span class="grad-em">Japonés</span><br />
+      y Francés
+    </h1>
+
+    <p class="hero-sub" id="hero-sub-typing">
+      Kits PDF gratis, apps recomendadas, tutores nativos y audio de pronunciación en vivo.
+      Todo en un solo lugar. Sin paywalls ocultos.
+    </p>
+
+    <!-- Search -->
+    <div class="search-wrapper">
+      <span class="search-icon" aria-hidden="true">🔍</span>
+      <input
+        id="search-input"
+        class="search-bar"
+        type="search"
+        placeholder="Buscar recursos, idiomas, apps..."
+        autocomplete="off"
+        aria-label="Buscar recursos"
+      />
+      <span class="search-kbd">⌘K</span>
+    </div>
+
+    <!-- Filter Pills -->
+    <div class="filter-section" role="group" aria-label="Filtros por idioma">
+      <div class="filter-group">
+        <button class="filter-pill active" data-filter="all" id="pill-all">🌐 Todos</button>
+        <button class="filter-pill" data-filter="coreano" id="pill-kr">
+          <span class="flag">🇰🇷</span> Coreano
+        </button>
+        <button class="filter-pill" data-filter="japones" id="pill-jp">
+          <span class="flag">🇯🇵</span> Japonés
+        </button>
+        <button class="filter-pill" data-filter="frances" id="pill-fr">
+          <span class="flag">🇫🇷</span> Francés
+        </button>
+        <button class="filter-pill" data-filter="tutors" id="pill-tutors">🎓 Tutores</button>
+        <button class="filter-pill" data-filter="kit" id="pill-kits">📥 Kits Gratis</button>
+        <button class="filter-pill" data-filter="app" id="pill-apps">📱 Apps</button>
+        <button class="filter-pill" data-filter="book" id="pill-books">📚 Libros</button>
+      </div>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar" aria-label="Estadísticas">
+      <div class="stat-item">
+        <span class="stat-num" id="stat-students">1,420+</span>
+        <span class="stat-label">Estudiantes este mes</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num" id="stat-resources">20</span>
+        <span class="stat-label">Recursos curados</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num" id="stat-languages">3</span>
+        <span class="stat-label">Idiomas disponibles</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num" id="stat-commission">$20</span>
+        <span class="stat-label">Comisión por lección Preply</span>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════
+     PREPLY HERO BANNER
+     ═══════════════════════════════════════════════ -->
+<section aria-label="Preply — Tutor Recomendado" style="padding: 0 0 0;">
+  <div class="container">
+    <div class="preply-banner">
+      <div class="preply-left">
+        <div class="preply-eyebrow">👑 Afiliado #1 — Mayor Comisión</div>
+        <h2 class="preply-title">
+          Aprende 3× más rápido con un<br />
+          <span>Tutor Nativo en Preply</span>
+        </h2>
+        <p class="preply-desc">
+          Clases 1-a-1 personalizadas con tutores certificados de Coreano, Japonés y Francés.
+          Más de 32,000 tutores disponibles. Lección de prueba a precio especial.
+        </p>
+        <div class="preply-features">
+          <div class="preply-feature">
+            <span class="check">✓</span>
+            Más de 32,000 tutores certificados nativos
+          </div>
+          <div class="preply-feature">
+            <span class="check">✓</span>
+            Horarios flexibles — desde 5 min al día
+          </div>
+          <div class="preply-feature">
+            <span class="check">✓</span>
+            Garantía de devolución si no te satisface
+          </div>
+          <div class="preply-feature">
+            <span class="check">✓</span>
+            Resultados medibles desde la primera clase
+          </div>
+        </div>
+        <a href="https://preply.sjv.io/c/7528742/1987575/24422"
+           target="_blank" rel="noopener" class="preply-cta">
+          🎓 Reservar Mi Primera Lección →
+        </a>
+      </div>
+
+      <div class="preply-right">
+        <div class="preply-commission">
+          <div class="commission-num">$20</div>
+          <div class="commission-label">por lección de prueba</div>
+          <div style="margin-top:16px;font-size:0.78rem;color:#64748B">+ comisiones recurrentes</div>
+          <div style="margin-top:8px;font-size:1.1rem;font-weight:700;color:#F59E0B">🏆 Afiliado #1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     RESOURCE CARDS
+     ═══════════════════════════════════════════════ -->
+<main id="recursos" class="section">
+  <div class="container">
+
+    <div class="section-header">
+      <h2 class="section-title">
+        Todos los <span>Recursos</span>
+      </h2>
+      <span class="section-count" id="result-count">20 recursos</span>
+    </div>
+
+    <!-- Cards Grid (rendered by JS) -->
+    <div class="cards-grid" id="cards-grid" role="list" aria-label="Recursos de aprendizaje"></div>
+
+    <!-- No Results -->
+    <div class="no-results" id="no-results" aria-live="polite">
+      <div class="no-results-icon">🔍</div>
+      <p>No se encontraron recursos para tu búsqueda.<br/>Intenta con otro término o borra el filtro.</p>
+    </div>
+
+  </div>
+</main>
+
+<!-- ═══════════════════════════════════════════════
+     AUDIO COMPANION
+     ═══════════════════════════════════════════════ -->
+<section id="audio" class="section" aria-label="Audio Companion — Pronunciación Nativa">
+  <div class="container">
+    <div class="audio-section">
+
+      <div class="audio-section-header">
+        <h2>🔊 Audio Companion — <span style="color:var(--emerald)">Pronunciación Nativa</span></h2>
+        <p>Escucha frases reales pronunciadas por síntesis de voz nativa del navegador.
+           Sin costo, sin límites. Haz clic en ▶ para escuchar a velocidad normal o 🐢 para despacio.</p>
+      </div>
+
+      <!-- Language Tabs -->
+      <div class="audio-tabs" role="tablist" aria-label="Selección de idioma">
+        <button class="audio-tab active" data-lang="japones" role="tab">🇯🇵 Japonés</button>
+        <button class="audio-tab" data-lang="frances" role="tab">🇫🇷 Francés</button>
+        <button class="audio-tab" data-lang="coreano" role="tab">🇰🇷 Coreano</button>
+      </div>
+
+      <!-- Phrases Grid (rendered by JS) -->
+      <div class="phrases-grid" id="phrases-grid" role="list"></div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     QUIZ WIDGET
+     ═══════════════════════════════════════════════ -->
+<section id="quiz" class="section" aria-label="Language Matchmaker Quiz">
+  <div class="container">
+    <div class="quiz-section">
+
+      <div class="quiz-header">
+        <h2>🧠 Language <span style="color:var(--gold)">Matchmaker</span> 2.0</h2>
+        <p>Responde 10 preguntas rápidas y nuestra IA calculará el recurso perfecto para ti,
+           con la herramienta que más se adapta a tu perfil y objetivos.</p>
+      </div>
+
+      <!-- Progress -->
+      <div class="quiz-progress-wrap">
+        <div class="quiz-progress-label">
+          <span id="quiz-progress-label">Pregunta 1 de 10</span>
+          <span id="quiz-progress-pct">0%</span>
+        </div>
+        <div class="quiz-progress-bar">
+          <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+        </div>
+      </div>
+
+      <!-- Question Area -->
+      <div class="quiz-question-wrap" id="quiz-question-wrap">
+        <div class="question-number" id="quiz-question-num">Pregunta 1 de 10</div>
+        <div class="question-text" id="quiz-question-text"></div>
+        <div class="quiz-options" id="quiz-options" role="group" aria-label="Opciones de respuesta"></div>
+      </div>
+
+      <!-- Result Area -->
+      <div class="quiz-result" id="quiz-result" role="alert" aria-live="polite">
+        <div style="font-size:2.5rem;margin-bottom:12px">🎯</div>
+        <div class="result-score" id="result-score">100%</div>
+        <div class="result-title" id="result-title">¡Tu idioma ideal es el Coreano!</div>
+        <p class="result-desc" id="result-desc"></p>
+        <a href="#" target="_blank" rel="noopener" class="result-cta" id="result-cta">
+          🎓 Reservar Lección Gratis en Preply →
+        </a>
+        <div style="margin-top:24px">
+          <button class="btn-quiz btn-restart" onclick="restartQuiz()">↩ Repetir Quiz</button>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="quiz-nav" id="quiz-nav">
+        <button class="btn-quiz btn-next" id="btn-next" onclick="nextQuestion()">
+          Siguiente →
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-links">
+      <a href="https://preply.sjv.io/c/7528742/1987575/24422" target="_blank" rel="noopener">Preply Tutores</a>
+      <a href="https://saludfuturo.gumroad.com/l/pzbjtk" target="_blank" rel="noopener">Kit Coreano ES</a>
+      <a href="https://saludfuturo.gumroad.com/l/citnbf" target="_blank" rel="noopener">Kit Japonés ES</a>
+      <a href="https://saludfuturo.gumroad.com/l/qekjnb" target="_blank" rel="noopener">Kit Francés ES</a>
+    </div>
+    <p>
+      © 2026 Language Resource Hub 2.0 — <a href="https://saludfuturo.gumroad.com" target="_blank" rel="noopener">SaludFuturo</a>
+      · Algunos enlaces son afiliados (sin costo adicional para ti)
+    </p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
