@@ -13,6 +13,9 @@ const LINKS = {
   kitJpEn:  'https://saludfuturo.gumroad.com/l/inxkm',
   kitFrEs:  'https://saludfuturo.gumroad.com/l/qekjnb',
   kitFrEn:  'https://saludfuturo.gumroad.com/l/wdzvgv',
+  plannerEs:  'https://saludfuturo.gumroad.com/l/fntbtl',
+  plannerEn:  'https://saludfuturo.gumroad.com/l/sqxait',
+  shedPlans:  'https://7cf44lrrjjzeu57nx7kjr9ohfn.hop.clickbank.net',
 };
 
 /* ═══════════════════════════════════════════════════
@@ -22,7 +25,7 @@ const T = {
   es: {
     nav_resources: 'Recursos', nav_audio: 'Audio Nativo',
     nav_quiz: 'Quiz', nav_cta: '🎓 Tutor Gratis',
-    hero_badge: '7 Recursos Seleccionados · Audio Nativo · Quiz IA',
+    hero_badge: '9 Recursos Seleccionados · Audio Nativo · Quiz IA',
     hero_h1: 'El Hub Definitivo para<br><span class="grad-gold">Coreano</span>, <span class="grad-em">Japonés</span><br>y Francés',
     hero_sub: 'Kits PDF gratis + tutores nativos 1-a-1. Todo curado. Cero relleno. 100% gratuito para empezar.',
     search_ph: 'Buscar recursos, idiomas...',
@@ -52,10 +55,10 @@ const T = {
     quiz_q_of: 'de', quiz_next: 'Siguiente →',
     quiz_finish: 'Ver Mi Resultado 🎯', quiz_restart: '↩ Repetir Quiz',
     result_prefix: 'Tu idioma ideal: ',
-    result_desc_tutor: 'Con tu perfil, las clases personalizadas 1-a-1 con un tutor nativo en Preply son tu mejor camino. Aprenderás hasta 3x más rápido.',
-    result_desc_kit: 'Empieza con tu Kit Express gratuito de {lang}. Es el paso perfecto para tu nivel y objetivos actuales.',
+    result_desc_tutor: 'Para tu perfil, las clases 1-a-1 personalizadas con un tutor nativo en Preply son tu mejor camino. Aprenderás hasta 3 veces más rápido.',
+    result_desc_kit: 'Comienza con tu Kit Express de {lang} gratis. Es el paso perfecto para tu nivel y objetivos.',
     result_cta_tutor: '🎓 Reservar Lección Gratis en Preply →',
-    result_cta_kit: '📥 Descargar Kit de {lang} Gratis →',
+    result_cta_kit: '📥 Descargar Kit Gratis de {lang} →',
     no_results: 'No se encontraron recursos.<br>Intenta con otro término o borra el filtro.',
     footer_copy: '© 2026 Language Resource Hub 2.0',
     footer_note: '· Algunos enlaces son afiliados (sin costo adicional para ti)',
@@ -63,7 +66,7 @@ const T = {
   en: {
     nav_resources: 'Resources', nav_audio: 'Native Audio',
     nav_quiz: 'Quiz', nav_cta: '🎓 Free Tutor',
-    hero_badge: '7 Selected Resources · Native Audio · AI Quiz',
+    hero_badge: '9 Selected Resources · Native Audio · AI Quiz',
     hero_h1: 'The Ultimate Hub to Learn<br><span class="grad-gold">Korean</span>, <span class="grad-em">Japanese</span><br>and French',
     hero_sub: 'Free PDF kits + native 1-on-1 tutors. All curated. Zero fluff. 100% free to get started.',
     search_ph: 'Search resources, languages...',
@@ -106,10 +109,11 @@ const T = {
 function t(key) { return T[state.lang][key] || T.es[key] || key; }
 
 /* ═══════════════════════════════════════════════════
-   RESOURCES — 7 CARDS
+   RESOURCES — 9 CARDS
    ✅ 1  × Preply Hero ($20/lección)
    ✅ 3  × Kits Gumroad (100% ganancia)
    ✅ 3  × Tutores Preply por idioma ($20/lección)
+   ✅ 2  × Cross-Promo (Student Planner + DIY Shed Plans $90)
    ═══════════════════════════════════════════════════ */
 const RESOURCES = [
 
@@ -228,6 +232,37 @@ const RESOURCES = [
     url:     { es: LINKS.preply, en: LINKS.preply },
     audio: { phrase: 'J\'apprends le français', romaji: 'Zha-praN le fraN-seh',
              trans: { es: 'Estoy aprendiendo francés', en: 'I am learning French' }, lang: 'fr-FR' },
+  },
+  /* ── 8-9. CROSS-PROMO (STUDENT PLANNER + CLICKBANK MY SHED PLANS) ── */
+  {
+    id: 8, hero: false, icon: '📚',
+    iconBg: 'linear-gradient(135deg,#6366F1,#4F46E5)',
+    category: 'kit', langCodes: ['kr','jp','fr'],
+    name:    { es: 'Kit Organizador Estudiantil & Universidad 2026', en: 'Ultimate College & Dorm Study Planner 2026' },
+    tagline: { es: 'Checklist de residencia + organizador de horarios + habit tracker en PDF. 100% gratis.',
+               en: 'Dorm checklist + weekly schedule planner + habit tracker PDF. 100% free download.' },
+    badges:  { es: [{ text: '🎓 ESTUDIANTES', cls: 'badge-sky' }, { text: '🎁 100% GRATIS', cls: 'badge-em' }],
+               en: [{ text: '🎓 COLLEGE',     cls: 'badge-sky' }, { text: '🎁 100% FREE',   cls: 'badge-em' }] },
+    benefit: { es: '🎁 Descargar Planner Estudiantil Gratis',        en: '🎁 Download Free College Planner' },
+    cta:     { es: '📥 Descargar Planner →',                         en: '📥 Download Planner →' },
+    ctaCls: 'cta-em',
+    url:     { es: LINKS.plannerEs, en: LINKS.plannerEn },
+    audio: null,
+  },
+  {
+    id: 9, hero: false, icon: '🛠️',
+    iconBg: 'linear-gradient(135deg,#D97706,#B45309)',
+    category: 'kit', langCodes: ['kr','jp','fr'],
+    name:    { es: 'My Shed Plans — 12,000 Planos de Carpintería',  en: 'My Shed Plans — 12,000 Woodworking Plans' },
+    tagline: { es: 'Guías de bricolaje paso a paso para construir cobertizos, muebles y proyectos de madera en casa.',
+               en: 'Step-by-step DIY guides & cutting lists to build sheds, furniture & woodworking projects.' },
+    badges:  { es: [{ text: '🛠️ BRICOLAJE', cls: 'badge-gold' }, { text: '⭐ OFERTA $90 DTO', cls: 'badge-rose' }],
+               en: [{ text: '🛠️ DIY CRAFT', cls: 'badge-gold' }, { text: '⭐ $90 OFF DEAL',   cls: 'badge-rose' }] },
+    benefit: { es: '🔥 Acceso Instantáneo a 12,000 Planos',          en: '🔥 Instant Access to 12,000 Plans' },
+    cta:     { es: '🛠️ Ver Planos de Carpintería →',                 en: '🛠️ View Woodworking Plans →' },
+    ctaCls: 'cta-gold',
+    url:     { es: LINKS.shedPlans, en: LINKS.shedPlans },
+    audio: null,
   },
 ];
 
