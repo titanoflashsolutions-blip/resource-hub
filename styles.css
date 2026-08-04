@@ -123,6 +123,42 @@ body::before {
 }
 
 /* ══════════════════════════════════════════════════════════════════
+   URGENCY BANNER
+   ══════════════════════════════════════════════════════════════════ */
+.urgency-banner {
+  background: linear-gradient(90deg, #B45309, #D97706, #B45309);
+  background-size: 200% auto;
+  color: #fff;
+  font-size: 0.85rem;
+  padding: 8px 0;
+  text-align: center;
+  position: relative;
+  z-index: 101;
+  animation: shimmer 3s infinite linear;
+}
+
+@keyframes shimmer {
+  to { background-position: 200% center; }
+}
+
+.urgency-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.countdown {
+  background: rgba(0,0,0,0.25);
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-family: 'Outfit', monospace;
+  letter-spacing: 1px;
+}
+
+/* ══════════════════════════════════════════════════════════════════
    NAVBAR
    ══════════════════════════════════════════════════════════════════ */
 .navbar {
@@ -1284,4 +1320,62 @@ footer a:hover { text-decoration: underline; }
   .hero h1 { font-size: 2.2rem; }
   .stats-bar { gap: 24px; }
   .preply-commission { display: none; }
+  .lang-switcher { margin-left: auto; }
+}
+
+/* ═══════════════════════════════════════════════════
+   LANGUAGE SWITCHER — Glassmorphism
+   ═══════════════════════════════════════════════════ */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: 100px;
+  padding: 3px;
+  gap: 2px;
+  backdrop-filter: var(--blur-card);
+  -webkit-backdrop-filter: var(--blur-card);
+  flex-shrink: 0;
+}
+
+.lang-btn {
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.lang-btn.active {
+  background: linear-gradient(135deg, var(--gold), #D97706);
+  color: #0F172A;
+  box-shadow: 0 2px 10px rgba(245,158,11,0.35);
+}
+
+.lang-btn:hover:not(.active) {
+  color: var(--text-primary);
+  background: rgba(255,255,255,0.07);
+}
+
+/* Card benefit label (replaces internal commission text) */
+.card-benefit {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--emerald);
+  background: rgba(16,185,129,0.08);
+  border: 1px solid rgba(16,185,129,0.2);
+  border-radius: 100px;
+  padding: 4px 12px;
+  white-space: nowrap;
 }

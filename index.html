@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" id="html-root">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,8 +19,10 @@
      ═══════════════════════════════════════════════ -->
 <div id="urgency-banner" class="urgency-banner">
   <div class="container urgency-inner">
-    <span>🔥 <strong>Oferta Flash:</strong> Reserva tu clase de prueba en Preply con descuento especial.</span>
-    <span class="countdown">Expira en: <span id="countdown-timer">02:00:00</span></span>
+    <span data-i18n="urgency_text">🔥 <strong>Oferta Flash:</strong> Reserva tu clase de prueba en Preply con descuento especial.</span>
+    <span class="countdown">
+      <span data-i18n="urgency_expires">Expira en:</span> <span id="countdown-timer">02:00:00</span>
+    </span>
   </div>
 </div>
 
@@ -35,16 +37,34 @@
     </a>
 
     <ul class="nav-links" role="list">
-      <li><a href="#recursos">Recursos</a></li>
-      <li><a href="#audio">Audio Nativo</a></li>
-      <li><a href="#quiz">Quiz</a></li>
+      <li><a href="#recursos" data-i18n="nav_resources">Recursos</a></li>
+      <li><a href="#audio"    data-i18n="nav_audio">Audio Nativo</a></li>
+      <li><a href="#quiz"     data-i18n="nav_quiz">Quiz</a></li>
       <li>
         <a href="https://preply.sjv.io/c/7528742/1987575/24422"
-           target="_blank" rel="noopener" class="nav-cta">
+           target="_blank" rel="noopener" class="nav-cta" data-i18n="nav_cta">
           🎓 Tutor Gratis
         </a>
       </li>
+      <li>
+        <a href="https://portfolio.titanoflashn8n.com/" target="_blank" rel="noopener"
+           style="font-size:.72rem;color:var(--gold);font-weight:700;letter-spacing:.04em;opacity:.85">
+          ⚡ TitanoFlash
+        </a>
+      </li>
     </ul>
+
+    <!-- Language Switcher -->
+    <div class="lang-switcher" role="group" aria-label="Language selector">
+      <button class="lang-btn" id="btn-lang-es" data-lang="es"
+              onclick="switchLanguage('es')" aria-label="Español">
+        🇪🇸 ES
+      </button>
+      <button class="lang-btn" id="btn-lang-en" data-lang="en"
+              onclick="switchLanguage('en')" aria-label="English">
+        🇺🇸 EN
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -56,52 +76,30 @@
 
     <div class="hero-badge">
       <span class="dot"></span>
-      20 Recursos · Audio Nativo · Quiz IA · Afiliados Premium
+      <span data-i18n="hero_badge">20 Recursos · Audio Nativo · Quiz IA · Afiliados Premium</span>
     </div>
 
-    <h1>
+    <h1 data-i18n="hero_h1">
       El Hub Definitivo para<br />
-      Aprender <span class="grad-gold">Coreano</span>,
+      <span class="grad-gold">Coreano</span>,
       <span class="grad-em">Japonés</span><br />
       y Francés
     </h1>
 
-    <p class="hero-sub" id="hero-sub-typing">
+    <p class="hero-sub" id="hero-sub-typing" data-i18n="hero_sub">
       Kits PDF gratis, apps recomendadas, tutores nativos y audio de pronunciación en vivo.
       Todo en un solo lugar. Sin paywalls ocultos.
     </p>
 
-    <!-- Search -->
-    <div class="search-wrapper">
-      <span class="search-icon" aria-hidden="true">🔍</span>
-      <input
-        id="search-input"
-        class="search-bar"
-        type="search"
-        placeholder="Buscar recursos, idiomas, apps..."
-        autocomplete="off"
-        aria-label="Buscar recursos"
-      />
-      <span class="search-kbd">⌘K</span>
-    </div>
-
     <!-- Filter Pills -->
     <div class="filter-section" role="group" aria-label="Filtros por idioma">
       <div class="filter-group">
-        <button class="filter-pill active" data-filter="all" id="pill-all">🌐 Todos</button>
-        <button class="filter-pill" data-filter="coreano" id="pill-kr">
-          <span class="flag">🇰🇷</span> Coreano
-        </button>
-        <button class="filter-pill" data-filter="japones" id="pill-jp">
-          <span class="flag">🇯🇵</span> Japonés
-        </button>
-        <button class="filter-pill" data-filter="frances" id="pill-fr">
-          <span class="flag">🇫🇷</span> Francés
-        </button>
+        <button class="filter-pill active" data-filter="all"    id="pill-all">🌐 Todos</button>
+        <button class="filter-pill" data-filter="kr"     id="pill-kr">🇰🇷 Coreano</button>
+        <button class="filter-pill" data-filter="jp"     id="pill-jp">🇯🇵 Japonés</button>
+        <button class="filter-pill" data-filter="fr"     id="pill-fr">🇫🇷 Francés</button>
         <button class="filter-pill" data-filter="tutors" id="pill-tutors">🎓 Tutores</button>
-        <button class="filter-pill" data-filter="kit" id="pill-kits">📥 Kits Gratis</button>
-        <button class="filter-pill" data-filter="app" id="pill-apps">📱 Apps</button>
-        <button class="filter-pill" data-filter="book" id="pill-books">📚 Libros</button>
+        <button class="filter-pill" data-filter="kit"    id="pill-kits">📥 Kits Gratis</button>
       </div>
     </div>
 
@@ -109,19 +107,19 @@
     <div class="stats-bar" aria-label="Estadísticas">
       <div class="stat-item">
         <span class="stat-num" id="stat-students">1,420+</span>
-        <span class="stat-label">Estudiantes este mes</span>
+        <span class="stat-label" data-i18n="stat_students">Estudiantes este mes</span>
       </div>
       <div class="stat-item">
         <span class="stat-num" id="stat-resources">20</span>
-        <span class="stat-label">Recursos curados</span>
+        <span class="stat-label" data-i18n="stat_resources">Recursos curados</span>
       </div>
       <div class="stat-item">
         <span class="stat-num" id="stat-languages">3</span>
-        <span class="stat-label">Idiomas disponibles</span>
+        <span class="stat-label" data-i18n="stat_languages">Idiomas disponibles</span>
       </div>
       <div class="stat-item">
-        <span class="stat-num" id="stat-commission">$20</span>
-        <span class="stat-label">Comisión por lección Preply</span>
+        <span class="stat-num" id="stat-tutors">32K+</span>
+        <span class="stat-label" data-i18n="stat_commission">Tutores nativos disponibles</span>
       </div>
     </div>
 
@@ -131,49 +129,51 @@
 <!-- ═══════════════════════════════════════════════
      PREPLY HERO BANNER
      ═══════════════════════════════════════════════ -->
-<section aria-label="Preply — Tutor Recomendado" style="padding: 0 0 0;">
+<section aria-label="Preply — Tutor Recomendado" style="padding:0 0 0">
   <div class="container">
     <div class="preply-banner">
       <div class="preply-left">
-        <div class="preply-eyebrow">👑 Afiliado #1 — Mayor Comisión</div>
-        <h2 class="preply-title">
-          Aprende 3× más rápido con un<br />
-          <span>Tutor Nativo en Preply</span>
+        <div class="preply-eyebrow" data-i18n="preply_eyebrow">👑 Afiliado #1 — Mayor Comisión</div>
+        <h2 class="preply-title" data-i18n="preply_title">
+          Aprende 3× más rápido con un <span>Tutor Nativo en Preply</span>
         </h2>
-        <p class="preply-desc">
+        <p class="preply-desc" data-i18n="preply_desc">
           Clases 1-a-1 personalizadas con tutores certificados de Coreano, Japonés y Francés.
-          Más de 32,000 tutores disponibles. Lección de prueba a precio especial.
+          Más de 32,000 tutores disponibles.
         </p>
         <div class="preply-features">
           <div class="preply-feature">
             <span class="check">✓</span>
-            Más de 32,000 tutores certificados nativos
+            <span data-i18n="preply_f1">Más de 32,000 tutores certificados nativos</span>
           </div>
           <div class="preply-feature">
             <span class="check">✓</span>
-            Horarios flexibles — desde 5 min al día
+            <span data-i18n="preply_f2">Horarios flexibles — desde 5 min al día</span>
           </div>
           <div class="preply-feature">
             <span class="check">✓</span>
-            Garantía de devolución si no te satisface
+            <span data-i18n="preply_f3">Garantía de devolución si no te satisface</span>
           </div>
           <div class="preply-feature">
             <span class="check">✓</span>
-            Resultados medibles desde la primera clase
+            <span data-i18n="preply_f4">Resultados medibles desde la primera clase</span>
           </div>
         </div>
         <a href="https://preply.sjv.io/c/7528742/1987575/24422"
-           target="_blank" rel="noopener" class="preply-cta">
+           target="_blank" rel="noopener" class="preply-cta" data-i18n="preply_cta">
           🎓 Reservar Mi Primera Lección →
         </a>
       </div>
 
       <div class="preply-right">
         <div class="preply-commission">
-          <div class="commission-num">$20</div>
-          <div class="commission-label">por lección de prueba</div>
-          <div style="margin-top:16px;font-size:0.78rem;color:#64748B">+ comisiones recurrentes</div>
-          <div style="margin-top:8px;font-size:1.1rem;font-weight:700;color:#F59E0B">🏆 Afiliado #1</div>
+          <div class="commission-num">50%</div>
+          <div class="commission-label" data-i18n="preply_comm_label">Clase de Prueba</div>
+          <div style="margin-top:12px;font-size:0.82rem;color:#94A3B8" data-i18n="preply_comm_note">
+            Empieza hoy sin compromiso
+          </div>
+          <div style="margin-top:10px;font-size:1rem;font-weight:700;color:#F59E0B"
+               data-i18n="preply_comm_badge">🔥 OFERTA LIMITADA</div>
         </div>
       </div>
     </div>
@@ -188,18 +188,60 @@
 
     <div class="section-header">
       <h2 class="section-title">
-        Todos los <span>Recursos</span>
+        <span data-i18n="section_all">Todos los</span>
+        <span data-i18n="section_span" style="color:var(--gold)">Recursos</span>
       </h2>
       <span class="section-count" id="result-count">20 recursos</span>
     </div>
 
-    <!-- Cards Grid (rendered by JS) -->
     <div class="cards-grid" id="cards-grid" role="list" aria-label="Recursos de aprendizaje"></div>
 
-    <!-- No Results -->
+    <!-- Cross-Promo Cards -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:24px">
+
+      <!-- Student Planner -->
+      <a href="https://saludfuturo.gumroad.com/l/sqxait" target="_blank" rel="noopener"
+         style="text-decoration:none;display:block;background:linear-gradient(135deg,rgba(16,185,129,.12),rgba(15,23,42,.9));border:1px solid rgba(16,185,129,.35);border-radius:14px;padding:24px;transition:transform .2s,border-color .2s"
+         onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(16,185,129,.7)'"
+         onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(16,185,129,.35)'">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+          <span style="font-size:2rem">🎓</span>
+          <div>
+            <div style="font-size:.65rem;font-weight:800;letter-spacing:.1em;color:#10B981;text-transform:uppercase">Descarga Gratis · PDF</div>
+            <div style="font-weight:800;font-size:1rem;color:#F1F5F9">Student &amp; Dorm Planner 2026</div>
+          </div>
+          <span style="margin-left:auto;background:#10B981;color:#0F172A;font-size:.65rem;font-weight:800;padding:4px 10px;border-radius:20px">🎡 100% FREE</span>
+        </div>
+        <p style="font-size:.85rem;color:#94A3B8;line-height:1.6;margin-bottom:16px">Dorm Room Essentials checklist + Weekly Schedule + Habit Tracker + Pomodoro. PDF instant download.</p>
+        <div style="background:#10B981;color:#0F172A;font-weight:800;font-size:.9rem;padding:12px 20px;border-radius:50px;text-align:center">
+          📥 Download Free Planner →
+        </div>
+      </a>
+
+      <!-- DIY Shed Plans -->
+      <a href="https://7cf44lrrjjzeu57nx7kjr9ohfn.hop.clickbank.net" target="_blank" rel="noopener"
+         style="text-decoration:none;display:block;background:linear-gradient(135deg,rgba(245,158,11,.12),rgba(15,23,42,.9));border:1px solid rgba(245,158,11,.35);border-radius:14px;padding:24px;transition:transform .2s,border-color .2s"
+         onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(245,158,11,.7)'"
+         onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(245,158,11,.35)'">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+          <span style="font-size:2rem">🛠️</span>
+          <div>
+            <div style="font-size:.65rem;font-weight:800;letter-spacing:.1em;color:#F59E0B;text-transform:uppercase">ClickBank Offer · $90 Commission</div>
+            <div style="font-weight:800;font-size:1rem;color:#F1F5F9">12,000 Woodworking &amp; DIY Shed Plans</div>
+          </div>
+          <span style="margin-left:auto;background:#F59E0B;color:#0F172A;font-size:.65rem;font-weight:800;padding:4px 10px;border-radius:20px">🔥 60% OFF</span>
+        </div>
+        <p style="font-size:.85rem;color:#94A3B8;line-height:1.6;margin-bottom:16px">12,000+ step-by-step woodworking blueprints. Build any shed, cabin or furniture. Instant digital download.</p>
+        <div style="background:linear-gradient(135deg,#F59E0B,#D97706);color:#0F172A;font-weight:800;font-size:.9rem;padding:12px 20px;border-radius:50px;text-align:center">
+          🪵 Get All 12,000 Plans →
+        </div>
+      </a>
+
+    </div>
+
     <div class="no-results" id="no-results" aria-live="polite">
       <div class="no-results-icon">🔍</div>
-      <p>No se encontraron recursos para tu búsqueda.<br/>Intenta con otro término o borra el filtro.</p>
+      <p data-i18n="no_results">No se encontraron recursos para tu búsqueda.<br>Intenta con otro término o borra el filtro.</p>
     </div>
 
   </div>
@@ -208,24 +250,27 @@
 <!-- ═══════════════════════════════════════════════
      AUDIO COMPANION
      ═══════════════════════════════════════════════ -->
-<section id="audio" class="section" aria-label="Audio Companion — Pronunciación Nativa">
+<section id="audio" class="section" aria-label="Audio Companion">
   <div class="container">
     <div class="audio-section">
 
       <div class="audio-section-header">
-        <h2>🔊 Audio Companion — <span style="color:var(--emerald)">Pronunciación Nativa</span></h2>
-        <p>Escucha frases reales pronunciadas por síntesis de voz nativa del navegador.
-           Sin costo, sin límites. Haz clic en ▶ para escuchar a velocidad normal o 🐢 para despacio.</p>
+        <h2>
+          <span data-i18n="audio_title">🔊 Audio Companion —</span>
+          <span style="color:var(--emerald)" data-i18n="audio_title_span">Pronunciación Nativa</span>
+        </h2>
+        <p data-i18n="audio_sub">
+          Escucha frases reales pronunciadas por síntesis de voz nativa del navegador.
+          Sin costo, sin límites. Haz clic en ▶ para velocidad normal o 🐢 para despacio.
+        </p>
       </div>
 
-      <!-- Language Tabs -->
-      <div class="audio-tabs" role="tablist" aria-label="Selección de idioma">
-        <button class="audio-tab active" data-lang="japones" role="tab">🇯🇵 Japonés</button>
-        <button class="audio-tab" data-lang="frances" role="tab">🇫🇷 Francés</button>
-        <button class="audio-tab" data-lang="coreano" role="tab">🇰🇷 Coreano</button>
+      <div class="audio-tabs" role="tablist">
+        <button class="audio-tab active" data-lang="japones" role="tab" data-i18n="audio_jp">🇯🇵 Japonés</button>
+        <button class="audio-tab"        data-lang="frances" role="tab" data-i18n="audio_fr">🇫🇷 Francés</button>
+        <button class="audio-tab"        data-lang="coreano" role="tab" data-i18n="audio_kr">🇰🇷 Coreano</button>
       </div>
 
-      <!-- Phrases Grid (rendered by JS) -->
       <div class="phrases-grid" id="phrases-grid" role="list"></div>
 
     </div>
@@ -233,51 +278,49 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════
-     QUIZ WIDGET
+     QUIZ
      ═══════════════════════════════════════════════ -->
 <section id="quiz" class="section" aria-label="Language Matchmaker Quiz">
   <div class="container">
     <div class="quiz-section">
 
       <div class="quiz-header">
-        <h2>🧠 Language <span style="color:var(--gold)">Matchmaker</span> 2.0</h2>
-        <p>Responde 10 preguntas rápidas y nuestra IA calculará el recurso perfecto para ti,
-           con la herramienta que más se adapta a tu perfil y objetivos.</p>
+        <h2>
+          <span data-i18n="quiz_h2_main">🧠 Language</span>
+          <span style="color:var(--gold)" data-i18n="quiz_h2_span">Matchmaker 2.0</span>
+        </h2>
+        <p data-i18n="quiz_sub">
+          Responde 10 preguntas rápidas y nuestra IA calculará el recurso perfecto para ti.
+        </p>
       </div>
 
-      <!-- Progress -->
       <div class="quiz-progress-wrap">
         <div class="quiz-progress-label">
           <span id="quiz-progress-label">Pregunta 1 de 10</span>
-          <span id="quiz-progress-pct">0%</span>
         </div>
         <div class="quiz-progress-bar">
           <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
         </div>
       </div>
 
-      <!-- Question Area -->
       <div class="quiz-question-wrap" id="quiz-question-wrap">
         <div class="question-number" id="quiz-question-num">Pregunta 1 de 10</div>
-        <div class="question-text" id="quiz-question-text"></div>
-        <div class="quiz-options" id="quiz-options" role="group" aria-label="Opciones de respuesta"></div>
+        <div class="question-text"   id="quiz-question-text"></div>
+        <div class="quiz-options"    id="quiz-options" role="group"></div>
       </div>
 
-      <!-- Result Area -->
       <div class="quiz-result" id="quiz-result" role="alert" aria-live="polite">
         <div style="font-size:2.5rem;margin-bottom:12px">🎯</div>
         <div class="result-score" id="result-score">100%</div>
-        <div class="result-title" id="result-title">¡Tu idioma ideal es el Coreano!</div>
-        <p class="result-desc" id="result-desc"></p>
-        <a href="#" target="_blank" rel="noopener" class="result-cta" id="result-cta">
-          🎓 Reservar Lección Gratis en Preply →
-        </a>
+        <div class="result-title" id="result-title"></div>
+        <p   class="result-desc"  id="result-desc"></p>
+        <a href="#" target="_blank" rel="noopener" class="result-cta" id="result-cta"></a>
         <div style="margin-top:24px">
-          <button class="btn-quiz btn-restart" onclick="restartQuiz()">↩ Repetir Quiz</button>
+          <button class="btn-quiz btn-restart" id="btn-restart" onclick="restartQuiz()"
+                  data-i18n="quiz_restart">↩ Repetir Quiz</button>
         </div>
       </div>
 
-      <!-- Navigation -->
       <div class="quiz-nav" id="quiz-nav">
         <button class="btn-quiz btn-next" id="btn-next" onclick="nextQuestion()">
           Siguiente →
@@ -293,15 +336,23 @@
      ═══════════════════════════════════════════════ -->
 <footer role="contentinfo">
   <div class="container">
+    <div style="text-align:center;margin-bottom:12px">
+      <a href="https://portfolio.titanoflashn8n.com/" target="_blank" rel="noopener"
+         style="font-size:.8rem;font-weight:700;color:var(--gold);letter-spacing:.06em">
+        ⚡ Powered by TitanoFlash.solutions
+      </a>
+    </div>
     <div class="footer-links">
-      <a href="https://preply.sjv.io/c/7528742/1987575/24422" target="_blank" rel="noopener">Preply Tutores</a>
-      <a href="https://saludfuturo.gumroad.com/l/pzbjtk" target="_blank" rel="noopener">Kit Coreano ES</a>
-      <a href="https://saludfuturo.gumroad.com/l/citnbf" target="_blank" rel="noopener">Kit Japonés ES</a>
-      <a href="https://saludfuturo.gumroad.com/l/qekjnb" target="_blank" rel="noopener">Kit Francés ES</a>
+      <a href="https://preply.sjv.io/c/7528742/1987575/24422" target="_blank" rel="noopener">Preply</a>
+      <a href="https://saludfuturo.gumroad.com/l/pzbjtk" target="_blank" rel="noopener">Kit Coreano 🇰🇷</a>
+      <a href="https://saludfuturo.gumroad.com/l/citnbf" target="_blank" rel="noopener">Kit Japonés 🇯🇵</a>
+      <a href="https://saludfuturo.gumroad.com/l/qekjnb" target="_blank" rel="noopener">Kit Francés 🇫🇷</a>
+      <a href="https://7cf44lrrjjzeu57nx7kjr9ohfn.hop.clickbank.net" target="_blank" rel="noopener">🪵 Shed Plans</a>
     </div>
     <p>
-      © 2026 Language Resource Hub 2.0 — <a href="https://saludfuturo.gumroad.com" target="_blank" rel="noopener">SaludFuturo</a>
-      · Algunos enlaces son afiliados (sin costo adicional para ti)
+      <span data-i18n="footer_copy">© 2026 Language Resource Hub 2.0</span>
+      — <a href="https://saludfuturo.gumroad.com" target="_blank" rel="noopener">SaludFuturo</a>
+      <span data-i18n="footer_note">· Algunos enlaces son afiliados (sin costo adicional para ti)</span>
     </p>
   </div>
 </footer>
