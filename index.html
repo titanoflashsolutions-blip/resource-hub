@@ -296,11 +296,18 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════
-     PIANO INTERACTIVO MULTILINGÜE (Für Elise + ClickBank + Preply)
+     PIANO INTERACTIVO MULTILINGÜE (3 Canciones en 3 Idiomas + Preply)
      ═══════════════════════════════════════════════ -->
 <section id="piano-section" class="section" aria-label="Piano Interactivo Multilingüe">
   <div class="container">
     <div class="interactive-piano-container" id="pianoRoot">
+
+      <!-- ── SELECTOR DE CANCIÓN POR IDIOMA ─────────────────── -->
+      <div style="display:flex;justify-content:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
+        <button class="pc-btn piano-song-btn active" data-song="kr">🇰🇷 Arirang (Coreano)</button>
+        <button class="pc-btn piano-song-btn" data-song="jp">🇯🇵 Sakura Sakura (Japonés)</button>
+        <button class="pc-btn piano-song-btn" data-song="fr">🇫🇷 Frère Jacques (Francés)</button>
+      </div>
 
       <!-- ── LCD DIGITAL ─────────────────────────────────────── -->
       <div class="piano-lcd">
@@ -321,7 +328,7 @@
         <div class="lcd-progress-track">
           <div class="lcd-progress-fill" id="lcdProgressFill"></div>
         </div>
-        <div class="lcd-status" id="lcdStatus">MODO LIBRE — Toca cualquier tecla para comenzar</div>
+        <div class="lcd-status" id="lcdStatus">MODO LIBRE — Selecciona una canción o toca libremente</div>
       </div>
 
       <!-- ── CONTROLES ───────────────────────────────────────── -->
@@ -338,13 +345,10 @@
         </div>
       </div>
 
-      <!-- ── CTAs DE CONVERSIÓN ──────────────────────────────── -->
+      <!-- ── CTA DE CONVERSIÓN EXCLUSIVO PREPLY ──────────────── -->
       <div class="piano-cta-zone">
-        <a class="cta-gold" href="https://7cf44lrrjjzeu57nx7kjr9ohfn.hop.clickbank.net" target="_blank" rel="noopener noreferrer">
-          🎓 ¿Quieres tocar piano fluido en 30 días? Conoce el Método Piano For All →
-        </a>
-        <a class="cta-secondary" href="https://preply.sjv.io/c/7528742/1987575/24422" target="_blank" rel="noopener noreferrer">
-          🗣️ Aprende Francés, Japonés o Coreano con Tutores Nativos en Preply →
+        <a class="cta-gold" href="https://preply.sjv.io/c/7528742/1987575/24422" target="_blank" rel="noopener noreferrer">
+          🎓 ¿Quieres dominar Coreano, Japonés o Francés? Reserva tu Clase de Prueba con un Tutor Nativo en Preply →
         </a>
       </div>
 

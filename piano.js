@@ -1,6 +1,9 @@
 /* ============================================================
    piano.js — Lógica de audio, interacción y lección guiada
-   Web Audio API pura. Cero dependencias externas.
+   Web Audio API pura con 3 Canciones Tradicionales:
+   - 🇰🇷 Coreano: Arirang (아리랑)
+   - 🇯🇵 Japonés: Sakura Sakura (さくら さくら)
+   - 🇫🇷 Francés: Frère Jacques
    ============================================================ */
 (function () {
   'use strict';
@@ -35,14 +38,24 @@
     ';':'E5',
   };
 
-  /* Für Elise — motivo inicial */
-  const SONG = [
-    'E5','D#5','E5','D#5','E5','B4','D5','C5','A4',
-    'C4','E4','A4','B4',
-    'E4','G#4','B4','C5',
-  ];
+  /* ── 3 CANCIONES TRADICIONALES EN 3 IDIOMAS ─────────────── */
+  const SONGS = {
+    kr: {
+      name: '🇰🇷 Arirang (아리랑)',
+      notes: ['E4','G4','A4','C5','A4','G4','E4','G4','A4','E4','D4','C4','D4','E4','G4','A4']
+    },
+    jp: {
+      name: '🇯🇵 Sakura Sakura (さくら さくら)',
+      notes: ['A4','A4','B4','A4','A4','B4','A4','B4','C5','B4','A4','B4','A4','F4','E4']
+    },
+    fr: {
+      name: '🇫🇷 Frère Jacques',
+      notes: ['C4','D4','E4','C4','C4','D4','E4','C4','E4','F4','G4','E4','F4','G4']
+    }
+  };
 
   /* ── ESTADO ───────────────────────────────────────────────── */
+  let currentSongKey = 'kr';
   let audioCtx = null;
   let mode = 'free';
   let songIndex = 0;
@@ -156,14 +169,15 @@
   }
 
   function updateLcdLesson() {
+    const song = SONGS[currentSongKey].notes;
     if (!lcdNext || !lcdProgress) return;
-    if (songIndex >= SONG.length) {
+    if (songIndex >= song.length) {
       lcdNext.textContent = '¡Completado! 🎉';
       lcdProgress.style.width = '100%';
       return;
     }
-    lcdNext.textContent = noteDisplayString(SONG[songIndex]);
-    lcdProgress.style.width = `${Math.round((songIndex / SONG.length) * 100)}%`;
+    lcdNext.textContent = noteDisplayString(song[songIndex]);
+    lcdProgress.style.width = `${Math.round((songIndex / song.length) * 100)}%`;
   }
 
   /* ── RESALTAR TECLA OBJETIVO ──────────────────────────────── */
@@ -190,19 +204,20 @@
     }
 
     if (mode === 'lesson') {
-      const expected = SONG[songIndex];
+      const song = SONGS[currentSongKey].notes;
+      const expected = song[songIndex];
       if (note === expected) {
         score++;
         if (lcdScore) lcdScore.textContent = score;
         if (keyEl) burstParticles(keyEl);
         songIndex++;
         updateLcdLesson();
-        if (songIndex >= SONG.length) {
-          if (lcdStatus) lcdStatus.textContent = '🎉 ¡Lección completada! Puntaje final: ' + score;
+        if (songIndex >= song.length) {
+          if (lcdStatus) lcdStatus.textContent = `🎉 ¡Canción completada! Puntaje final: ${score}`;
           clearTargets();
           mode = 'free';
         } else {
-          highlightTarget(SONG[songIndex]);
+          highlightTarget(song[songIndex]);
         }
       }
     }
@@ -226,6 +241,32 @@
     pressKey(note, keyEl);
   });
 
+  /* ── SELECTOR DE CANCIÓN / IDIOMA ────────────────────────── */
+  function setSong(langKey) {
+    stopDemo();
+    currentSongKey = langKey;
+    document.querySelectorAll('.piano-song-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.song === langKey);
+    });
+    if (mode === 'lesson') {
+      startLesson();
+    } else {
+      if (lcdStatus) lcdStatus.textContent = `Canción seleccionada: ${SONGS[langKey].name}`;
+    }
+  }
+
+  function startLesson() {
+    stopDemo();
+    mode = 'lesson';
+    songIndex = 0;
+    score = 0;
+    if (lcdScore) lcdScore.textContent = '0';
+    if (lcdStatus) lcdStatus.textContent = `🎯 LECCIÓN: Toca ${SONGS[currentSongKey].name}`;
+    updateLcdLesson();
+    highlightTarget(SONGS[currentSongKey].notes[0]);
+    setActiveButton(btnStart);
+  }
+
   /* ── BOTONES DE MODO ──────────────────────────────────────── */
   const btnStart = document.getElementById('btnStartLesson');
   const btnDemo = document.getElementById('btnDemo');
@@ -241,17 +282,7 @@
   }
 
   if (btnStart) {
-    btnStart.addEventListener('click', () => {
-      stopDemo();
-      mode = 'lesson';
-      songIndex = 0;
-      score = 0;
-      if (lcdScore) lcdScore.textContent = '0';
-      if (lcdStatus) lcdStatus.textContent = '🎯 LECCIÓN GUIADA — Toca la tecla iluminada (Für Elise)';
-      updateLcdLesson();
-      highlightTarget(SONG[0]);
-      setActiveButton(btnStart);
-    });
+    btnStart.addEventListener('click', startLesson);
   }
 
   if (btnDemo) {
@@ -259,17 +290,18 @@
       stopDemo();
       mode = 'demo';
       clearTargets();
-      if (lcdStatus) lcdStatus.textContent = '🎧 Reproduciendo demo automática...';
+      const song = SONGS[currentSongKey].notes;
+      if (lcdStatus) lcdStatus.textContent = `🎧 Demo en vivo: ${SONGS[currentSongKey].name}`;
       setActiveButton(btnDemo);
       let i = 0;
       function step() {
-        if (i >= SONG.length || mode !== 'demo') {
+        if (i >= song.length || mode !== 'demo') {
           if (lcdStatus) lcdStatus.textContent = 'Demo finalizada. Elige un modo para continuar.';
           clearTargets();
           mode = 'free';
           return;
         }
-        const note = SONG[i];
+        const note = song[i];
         if (keyboardEl) {
           const keyEl = keyboardEl.querySelector(`[data-note="${note}"]`);
           highlightTarget(note);
@@ -297,5 +329,13 @@
       setActiveButton(btnFree);
     });
   }
+
+  // Exponer selector globalmente
+  window.setPianoSong = setSong;
+
+  // Conectar botones de canciones
+  document.querySelectorAll('.piano-song-btn').forEach(btn => {
+    btn.addEventListener('click', () => setPianoSong(btn.dataset.song));
+  });
 
 })();
