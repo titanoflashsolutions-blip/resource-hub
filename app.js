@@ -972,7 +972,7 @@ function initWordCounter() {
   // Words to ignore in density (stop-words basic)
   const STOP = new Set(['de','la','el','en','que','y','a','los','del','se','las','por','un','con','para','una','su','al','es','lo','como','más','pero','sus','le','ya','o','fue','este','ha','si','sobre','este','eso','era','muy','también','cuando','son','no','hay','me','te','le','esta','bien','yo','tan','así','hemos','the','a','an','and','is','in','of','to','for','on','with','as','at','be','it','by','are','this','was','that','or','from','but','has','not','we','have']);
 
-  textarea.addEventListener('input', debounce(analyze, 200));
+  textarea.addEventListener('input', function() { _wc_debounce_timer && clearTimeout(_wc_debounce_timer); _wc_debounce_timer = setTimeout(analyze, 200); });
 
   function analyze() {
     const raw  = textarea.value;
@@ -1030,15 +1030,18 @@ function initWordCounter() {
   }
 }
 
-/* ── debounce helper (reuse if already defined) ── */
-if (typeof debounce === 'undefined') {
-  function debounce(fn, ms) {
-    let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); };
-  }
-}
+/* ── Word counter debounce timer ── */
+var _wc_debounce_timer = null;
 
 /* ── Bootstrap tools after DOM ready ── */
 document.addEventListener('DOMContentLoaded', () => {
   initPFPGenerator();
   initWordCounter();
 });
+
+/* ── debounce helper (reuse if already defined) ── */
+if (typeof debounce === 'undefined') {
+  function debounce(fn, ms) {
+    let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); };
+  }
+}
