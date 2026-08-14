@@ -11,6 +11,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- ═══ GOOGLE ADSENSE ═══ -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+          crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -40,6 +44,7 @@
       <li><a href="#recursos" data-i18n="nav_resources">Recursos</a></li>
       <li><a href="#audio"    data-i18n="nav_audio">Audio Nativo</a></li>
       <li><a href="#quiz"     data-i18n="nav_quiz">Quiz</a></li>
+      <li><a href="#tools"    data-i18n="nav_tools">🛠️ Tools</a></li>
       <li>
         <a href="https://preply.sjv.io/c/7528742/1987575/24422"
            target="_blank" rel="noopener" class="nav-cta" data-i18n="nav_cta">
@@ -285,6 +290,143 @@
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     ADSENSE BANNER — entre Quiz y Tools
+     ═══════════════════════════════════════════════ -->
+<div class="adsense-block" aria-label="Publicidad">
+  <div class="container" style="text-align:center;padding:12px 0">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     UTILITY SECTION — PFP Generator + Word Counter
+     ═══════════════════════════════════════════════ -->
+<section id="tools" class="section" aria-label="Herramientas Utilitarias">
+  <div class="container">
+
+    <div class="section-header">
+      <h2 class="section-title">
+        <span data-i18n="tools_title_1">🛠️ Herramientas</span>
+        <span data-i18n="tools_title_2" style="color:var(--gold)">Gratis</span>
+      </h2>
+      <span class="section-count" data-i18n="tools_subtitle">2 apps interactivas · Sin registro</span>
+    </div>
+
+    <div class="tools-grid">
+
+      <!-- ── PFP GENERATOR ───────────────────── -->
+      <div class="tool-card" id="pfp-tool">
+        <div class="tool-card-header">
+          <div class="tool-icon">🎨</div>
+          <div>
+            <h3 class="tool-title" data-i18n="pfp_title">Generador de PFP Estético</h3>
+            <p class="tool-desc" data-i18n="pfp_desc">Convierte tu foto en un avatar con filtros de anime, neon, vintage y más. 100% en tu navegador — sin subir datos.</p>
+          </div>
+        </div>
+
+        <div class="pfp-workspace">
+          <!-- Upload zone -->
+          <div class="pfp-upload-zone" id="pfp-drop-zone">
+            <input type="file" id="pfp-file-input" accept="image/*" style="display:none" />
+            <div class="pfp-upload-inner" onclick="document.getElementById('pfp-file-input').click()">
+              <div class="pfp-upload-icon">📷</div>
+              <p class="pfp-upload-text" data-i18n="pfp_upload">Haz clic o arrastra tu imagen aquí</p>
+              <p class="pfp-upload-hint" data-i18n="pfp_hint">JPG, PNG, WEBP · Máx. 10 MB</p>
+            </div>
+          </div>
+
+          <!-- Canvas preview -->
+          <div class="pfp-preview-wrap" id="pfp-preview-wrap" style="display:none">
+            <canvas id="pfp-canvas" width="400" height="400"></canvas>
+            <button class="pfp-download-btn" id="pfp-download-btn" data-i18n="pfp_download">⬇️ Descargar PFP</button>
+          </div>
+        </div>
+
+        <!-- Filter pills -->
+        <div class="pfp-filters" id="pfp-filters">
+          <button class="pfp-filter-btn active" data-filter="none"    data-i18n="filter_none">🌟 Original</button>
+          <button class="pfp-filter-btn" data-filter="anime"   data-i18n="filter_anime">🎌 Anime</button>
+          <button class="pfp-filter-btn" data-filter="neon"    data-i18n="filter_neon">💜 Neon</button>
+          <button class="pfp-filter-btn" data-filter="vintage" data-i18n="filter_vintage">🎞️ Vintage</button>
+          <button class="pfp-filter-btn" data-filter="bw"      data-i18n="filter_bw">🖤 B&W</button>
+          <button class="pfp-filter-btn" data-filter="warm"    data-i18n="filter_warm">🌅 Warm</button>
+          <button class="pfp-filter-btn" data-filter="cool"    data-i18n="filter_cool">🧊 Cool</button>
+        </div>
+
+        <!-- CTA contextual afiliado -->
+        <div class="tool-affiliate-cta">
+          <span data-i18n="pfp_cta_text">¿Quieres mejorar tu pronunciación con tu nuevo look?</span>
+          <a href="https://preply.sjv.io/c/7528742/1987575/24422" target="_blank" rel="noopener" class="tool-cta-link" data-i18n="pfp_cta_btn">🎓 Prueba Preply Gratis →</a>
+        </div>
+      </div>
+
+      <!-- ── WORD COUNTER ────────────────────── -->
+      <div class="tool-card" id="wc-tool">
+        <div class="tool-card-header">
+          <div class="tool-icon">📝</div>
+          <div>
+            <h3 class="tool-title" data-i18n="wc_title">Contador de Palabras Inteligente</h3>
+            <p class="tool-desc" data-i18n="wc_desc">Pega tu texto y obtén: palabras, caracteres, tiempo de lectura y densidad de vocabulario. Ideal para redactar en el idioma que estudias.</p>
+          </div>
+        </div>
+
+        <textarea id="wc-input" class="wc-textarea"
+                  placeholder="Escribe o pega tu texto aquí para analizarlo..."
+                  rows="8" spellcheck="true"></textarea>
+
+        <div class="wc-stats">
+          <div class="wc-stat-item">
+            <span class="wc-stat-num" id="wc-words">0</span>
+            <span class="wc-stat-label" data-i18n="wc_words">Palabras</span>
+          </div>
+          <div class="wc-stat-item">
+            <span class="wc-stat-num" id="wc-chars">0</span>
+            <span class="wc-stat-label" data-i18n="wc_chars">Caracteres</span>
+          </div>
+          <div class="wc-stat-item">
+            <span class="wc-stat-num" id="wc-read">0s</span>
+            <span class="wc-stat-label" data-i18n="wc_read">Lectura</span>
+          </div>
+          <div class="wc-stat-item">
+            <span class="wc-stat-num" id="wc-unique">0</span>
+            <span class="wc-stat-label" data-i18n="wc_unique">Únicas</span>
+          </div>
+        </div>
+
+        <div class="wc-density" id="wc-density-wrap" style="display:none">
+          <p class="wc-density-title" data-i18n="wc_density_title">📊 Top Palabras</p>
+          <div id="wc-density-bars"></div>
+        </div>
+
+        <div class="tool-affiliate-cta">
+          <span data-i18n="wc_cta_text">Aprende a redactar mejor en coreano, japonés o francés.</span>
+          <a href="https://preply.sjv.io/c/7528742/1987575/24422" target="_blank" rel="noopener" class="tool-cta-link" data-i18n="wc_cta_btn">🎓 Clases con Tutor Nativo →</a>
+        </div>
+      </div>
+
+    </div><!-- /tools-grid -->
+
+    <!-- AdSense bloque dentro de la sección -->
+    <div style="text-align:center;margin-top:32px">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+           data-ad-slot="0987654321"
+           data-ad-format="rectangle"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
   </div>
 </section>
 

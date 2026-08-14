@@ -1379,3 +1379,274 @@ footer a:hover { text-decoration: underline; }
   padding: 4px 12px;
   white-space: nowrap;
 }
+
+/* ═══════════════════════════════════════════════════════════
+   UTILITY TOOLS SECTION
+   ═══════════════════════════════════════════════════════════ */
+
+/* AdSense block */
+.adsense-block {
+  background: rgba(15,23,42,0.6);
+  border-top: 1px solid var(--border-glass);
+  border-bottom: 1px solid var(--border-glass);
+  min-height: 60px;
+  padding: 8px 0;
+}
+
+/* Tools grid — 2 columns on desktop, 1 on mobile */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 28px;
+  margin-top: 32px;
+}
+
+/* Tool card */
+.tool-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: 20px;
+  padding: 28px;
+  backdrop-filter: blur(16px);
+  transition: transform .25s, border-color .25s, box-shadow .25s;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.tool-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-hover);
+  box-shadow: 0 16px 40px rgba(245,158,11,0.1);
+}
+
+.tool-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.tool-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(245,158,11,0.1);
+  border: 1px solid rgba(245,158,11,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tool-title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #F1F5F9;
+  margin: 0 0 4px;
+}
+.tool-desc {
+  font-size: 0.82rem;
+  color: #64748B;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ── PFP Generator ─────────────────── */
+.pfp-workspace {
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.pfp-upload-zone {
+  border: 2px dashed rgba(245,158,11,0.3);
+  border-radius: 14px;
+  background: rgba(15,23,42,0.5);
+  transition: border-color .2s, background .2s;
+  cursor: pointer;
+}
+.pfp-upload-zone:hover,
+.pfp-upload-zone.drag-over {
+  border-color: var(--gold);
+  background: rgba(245,158,11,0.05);
+}
+.pfp-upload-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  gap: 8px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+.pfp-upload-icon { font-size: 2.5rem; }
+.pfp-upload-text { font-weight: 600; color: #CBD5E1; font-size: 0.9rem; margin: 0; }
+.pfp-upload-hint { font-size: 0.75rem; color: #475569; margin: 0; }
+
+.pfp-preview-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+#pfp-canvas {
+  border-radius: 50%;
+  width: 220px;
+  height: 220px;
+  display: block;
+  box-shadow: 0 0 0 4px rgba(245,158,11,0.25), 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.pfp-download-btn {
+  background: linear-gradient(135deg, var(--gold), #D97706);
+  color: #0F172A;
+  border: none;
+  border-radius: 100px;
+  padding: 10px 28px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: opacity .2s, transform .2s;
+}
+.pfp-download-btn:hover { opacity: .9; transform: scale(1.03); }
+
+/* Filter pills */
+.pfp-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.pfp-filter-btn {
+  background: rgba(30,41,59,0.7);
+  border: 1px solid var(--border-glass);
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #94A3B8;
+  cursor: pointer;
+  transition: all .2s;
+}
+.pfp-filter-btn:hover { border-color: var(--gold); color: var(--gold); }
+.pfp-filter-btn.active {
+  background: rgba(245,158,11,0.15);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ── Word Counter ──────────────────── */
+.wc-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(15,23,42,0.6);
+  border: 1px solid var(--border-glass);
+  border-radius: 12px;
+  padding: 14px 16px;
+  color: #E2E8F0;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  resize: vertical;
+  outline: none;
+  transition: border-color .2s;
+}
+.wc-textarea:focus { border-color: rgba(245,158,11,0.45); }
+.wc-textarea::placeholder { color: #475569; }
+
+.wc-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.wc-stat-item {
+  background: rgba(15,23,42,0.5);
+  border: 1px solid var(--border-glass);
+  border-radius: 12px;
+  padding: 12px 8px;
+  text-align: center;
+}
+.wc-stat-num {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--gold);
+  line-height: 1;
+}
+.wc-stat-label {
+  display: block;
+  font-size: 0.68rem;
+  color: #64748B;
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+/* Density bars */
+.wc-density { padding: 0 2px; }
+.wc-density-title { font-size: 0.8rem; font-weight: 700; color: #94A3B8; margin: 0 0 10px; }
+.density-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.density-word {
+  font-size: 0.76rem;
+  color: #CBD5E1;
+  width: 80px;
+  flex-shrink: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.density-bar-wrap {
+  flex: 1;
+  height: 6px;
+  background: rgba(30,41,59,0.8);
+  border-radius: 100px;
+  overflow: hidden;
+}
+.density-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), #D97706);
+  border-radius: 100px;
+  transition: width .4s ease;
+}
+.density-count {
+  font-size: 0.72rem;
+  color: #64748B;
+  width: 24px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* Tool affiliate CTA */
+.tool-affiliate-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  background: rgba(245,158,11,0.06);
+  border: 1px solid rgba(245,158,11,0.15);
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: #94A3B8;
+  margin-top: auto;
+}
+.tool-cta-link {
+  color: var(--gold);
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity .2s;
+}
+.tool-cta-link:hover { opacity: .8; }
+
+@media (max-width: 640px) {
+  .wc-stats { grid-template-columns: repeat(2, 1fr); }
+  .tools-grid { grid-template-columns: 1fr; }
+  #pfp-canvas { width: 180px; height: 180px; }
+}

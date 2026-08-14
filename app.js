@@ -62,6 +62,25 @@ const T = {
     no_results: 'No se encontraron recursos.<br>Intenta con otro término o borra el filtro.',
     footer_copy: '© 2026 Language Resource Hub 2.0',
     footer_note: '· Algunos enlaces son afiliados (sin costo adicional para ti)',
+    nav_tools: '🛠️ Tools',
+    tools_title_1: '🛠️ Herramientas', tools_title_2: 'Gratis',
+    tools_subtitle: '2 apps interactivas · Sin registro',
+    pfp_title: 'Generador de PFP Estético',
+    pfp_desc: 'Convierte tu foto en un avatar con filtros de anime, neon, vintage y más. 100% en tu navegador — sin subir datos.',
+    pfp_upload: 'Haz clic o arrastra tu imagen aquí',
+    pfp_hint: 'JPG, PNG, WEBP · Máx. 10 MB',
+    pfp_download: '⬇️ Descargar PFP',
+    pfp_cta_text: '¿Quieres mejorar tu pronunciación con tu nuevo avatar?',
+    pfp_cta_btn: '🎓 Prueba Preply Gratis →',
+    filter_none: '🌟 Original', filter_anime: '🎌 Anime',
+    filter_neon: '💜 Neon', filter_vintage: '🎞️ Vintage',
+    filter_bw: '🖤 B&W', filter_warm: '🌅 Warm', filter_cool: '🧊 Cool',
+    wc_title: 'Contador de Palabras Inteligente',
+    wc_desc: 'Pega tu texto y obtén: palabras, caracteres, tiempo de lectura y densidad de vocabulario. Ideal para redactar en el idioma que estudias.',
+    wc_words: 'Palabras', wc_chars: 'Caracteres', wc_read: 'Lectura', wc_unique: 'Únicas',
+    wc_density_title: '📊 Top Palabras',
+    wc_cta_text: 'Aprende a redactar mejor en coreano, japonés o francés.',
+    wc_cta_btn: '🎓 Clases con Tutor Nativo →',
   },
   en: {
     nav_resources: 'Resources', nav_audio: 'Native Audio',
@@ -103,6 +122,25 @@ const T = {
     no_results: 'No resources found.<br>Try a different term or clear the filter.',
     footer_copy: '© 2026 Language Resource Hub 2.0',
     footer_note: '· Some links are affiliate links (no extra cost to you)',
+    nav_tools: '🛠️ Tools',
+    tools_title_1: '🛠️ Free', tools_title_2: 'Tools',
+    tools_subtitle: '2 interactive apps · No sign-up needed',
+    pfp_title: 'Aesthetic PFP Generator',
+    pfp_desc: 'Turn your photo into an avatar with anime, neon, vintage filters & more. 100% in your browser — no data uploaded.',
+    pfp_upload: 'Click or drag your image here',
+    pfp_hint: 'JPG, PNG, WEBP · Max 10 MB',
+    pfp_download: '⬇️ Download PFP',
+    pfp_cta_text: 'Want to improve your pronunciation with your new look?',
+    pfp_cta_btn: '🎓 Try Preply for Free →',
+    filter_none: '🌟 Original', filter_anime: '🎌 Anime',
+    filter_neon: '💜 Neon', filter_vintage: '🎞️ Vintage',
+    filter_bw: '🖤 B&W', filter_warm: '🌅 Warm', filter_cool: '🧊 Cool',
+    wc_title: 'Smart Word Counter',
+    wc_desc: 'Paste your text and get: word count, characters, reading time and vocabulary density. Great for writing in the language you study.',
+    wc_words: 'Words', wc_chars: 'Characters', wc_read: 'Read time', wc_unique: 'Unique',
+    wc_density_title: '📊 Top Words',
+    wc_cta_text: 'Learn to write better in Korean, Japanese or French.',
+    wc_cta_btn: '🎓 Classes with Native Tutor →',
   }
 };
 
@@ -759,3 +797,248 @@ function animateStats() {
   const bar = document.querySelector('.stats-bar');
   if (bar) observer.observe(bar);
 }
+
+/* ═══════════════════════════════════════════════════
+   PFP GENERATOR — Canvas Filters (JS puro)
+   ═══════════════════════════════════════════════════ */
+function initPFPGenerator() {
+  const fileInput  = document.getElementById('pfp-file-input');
+  const dropZone   = document.getElementById('pfp-drop-zone');
+  const previewWrap= document.getElementById('pfp-preview-wrap');
+  const canvas     = document.getElementById('pfp-canvas');
+  const downloadBtn= document.getElementById('pfp-download-btn');
+  const filterBtns = document.querySelectorAll('.pfp-filter-btn');
+  if (!fileInput || !canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  let originalImageData = null;
+  let activeFilter = 'none';
+
+  /* ── Load image ── */
+  function loadImage(file) {
+    if (!file || !file.type.startsWith('image/')) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      const img = new Image();
+      img.onload = () => {
+        // Crop square center
+        const size  = Math.min(img.width, img.height);
+        const sx    = (img.width  - size) / 2;
+        const sy    = (img.height - size) / 2;
+        canvas.width  = 400;
+        canvas.height = 400;
+        ctx.drawImage(img, sx, sy, size, size, 0, 0, 400, 400);
+        originalImageData = ctx.getImageData(0, 0, 400, 400);
+        applyFilter(activeFilter);
+        dropZone.style.display   = 'none';
+        previewWrap.style.display = 'block';
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  fileInput.addEventListener('change', e => loadImage(e.target.files[0]));
+
+  // Drag & drop
+  dropZone.addEventListener('dragover',  e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+  dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+  dropZone.addEventListener('drop',      e => { e.preventDefault(); dropZone.classList.remove('drag-over'); loadImage(e.dataTransfer.files[0]); });
+
+  /* ── Pixel Filters ── */
+  const FILTERS = {
+    none:    d => d, // passthrough
+
+    bw(d) {
+      for (let i = 0; i < d.data.length; i += 4) {
+        const g = d.data[i] * 0.299 + d.data[i+1] * 0.587 + d.data[i+2] * 0.114;
+        d.data[i] = d.data[i+1] = d.data[i+2] = g;
+      }
+      return d;
+    },
+
+    vintage(d) {
+      for (let i = 0; i < d.data.length; i += 4) {
+        d.data[i]   = Math.min(255, d.data[i]   * 1.1  + 30);
+        d.data[i+1] = Math.min(255, d.data[i+1] * 0.9  + 10);
+        d.data[i+2] = Math.min(255, d.data[i+2] * 0.7);
+      }
+      return d;
+    },
+
+    warm(d) {
+      for (let i = 0; i < d.data.length; i += 4) {
+        d.data[i]   = Math.min(255, d.data[i]   + 40);
+        d.data[i+1] = Math.min(255, d.data[i+1] + 15);
+        d.data[i+2] = Math.max(0,   d.data[i+2] - 30);
+      }
+      return d;
+    },
+
+    cool(d) {
+      for (let i = 0; i < d.data.length; i += 4) {
+        d.data[i]   = Math.max(0,   d.data[i]   - 30);
+        d.data[i+1] = Math.min(255, d.data[i+1] + 10);
+        d.data[i+2] = Math.min(255, d.data[i+2] + 50);
+      }
+      return d;
+    },
+
+    neon(d) {
+      // grayscale base + vivid purple-cyan boost
+      for (let i = 0; i < d.data.length; i += 4) {
+        const g = d.data[i] * 0.2 + d.data[i+1] * 0.5 + d.data[i+2] * 0.3;
+        d.data[i]   = Math.min(255, g * 0.4 + 80);   // R: muted
+        d.data[i+1] = Math.min(255, g * 0.1 + 20);   // G: low
+        d.data[i+2] = Math.min(255, g * 1.2 + 120);  // B: vivid blue
+        // Neon purple on bright pixels
+        if (g > 160) {
+          d.data[i]   = Math.min(255, d.data[i]   + 140);
+          d.data[i+2] = Math.min(255, d.data[i+2] + 60);
+        }
+      }
+      return d;
+    },
+
+    anime(d) {
+      // Posterize + contrast + slight desaturate mid-tones
+      for (let i = 0; i < d.data.length; i += 4) {
+        // Posterize to 4 levels
+        d.data[i]   = Math.round(d.data[i]   / 64) * 64;
+        d.data[i+1] = Math.round(d.data[i+1] / 64) * 64;
+        d.data[i+2] = Math.round(d.data[i+2] / 64) * 64;
+        // Boost contrast
+        d.data[i]   = Math.min(255, Math.max(0, (d.data[i]   - 128) * 1.4 + 128));
+        d.data[i+1] = Math.min(255, Math.max(0, (d.data[i+1] - 128) * 1.4 + 128));
+        d.data[i+2] = Math.min(255, Math.max(0, (d.data[i+2] - 128) * 1.4 + 128));
+      }
+      return d;
+    },
+  };
+
+  function applyFilter(name) {
+    if (!originalImageData) return;
+    // Clone original before mutation
+    const cloned = new ImageData(
+      new Uint8ClampedArray(originalImageData.data),
+      originalImageData.width,
+      originalImageData.height
+    );
+    const result = (FILTERS[name] || FILTERS.none)(cloned);
+    ctx.putImageData(result, 0, 0);
+
+    // Add rounded circle crop overlay
+    ctx.globalCompositeOperation = 'destination-in';
+    ctx.beginPath();
+    ctx.arc(200, 200, 200, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.globalCompositeOperation = 'source-over';
+  }
+
+  // Filter buttons
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.dataset.filter;
+      applyFilter(activeFilter);
+    });
+  });
+
+  // Download
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.download = 'my-pfp.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   WORD COUNTER — JS puro con densidad de vocabulario
+   ═══════════════════════════════════════════════════ */
+function initWordCounter() {
+  const textarea   = document.getElementById('wc-input');
+  const elWords    = document.getElementById('wc-words');
+  const elChars    = document.getElementById('wc-chars');
+  const elRead     = document.getElementById('wc-read');
+  const elUnique   = document.getElementById('wc-unique');
+  const densityWrap= document.getElementById('wc-density-wrap');
+  const densityBars= document.getElementById('wc-density-bars');
+  if (!textarea) return;
+
+  // Words to ignore in density (stop-words basic)
+  const STOP = new Set(['de','la','el','en','que','y','a','los','del','se','las','por','un','con','para','una','su','al','es','lo','como','más','pero','sus','le','ya','o','fue','este','ha','si','sobre','este','eso','era','muy','también','cuando','son','no','hay','me','te','le','esta','bien','yo','tan','así','hemos','the','a','an','and','is','in','of','to','for','on','with','as','at','be','it','by','are','this','was','that','or','from','but','has','not','we','have']);
+
+  textarea.addEventListener('input', debounce(analyze, 200));
+
+  function analyze() {
+    const raw  = textarea.value;
+    const text = raw.trim();
+
+    if (!text) {
+      elWords.textContent  = '0';
+      elChars.textContent  = '0';
+      elRead.textContent   = '0s';
+      elUnique.textContent = '0';
+      densityWrap.style.display = 'none';
+      return;
+    }
+
+    const words = text.match(/[\p{L}'-]+/gu) || [];
+    const wc    = words.length;
+    const cc    = raw.length;
+
+    // Reading time: ~200 wpm average
+    const secs = Math.ceil((wc / 200) * 60);
+    const readStr = secs < 60
+      ? secs + 's'
+      : Math.floor(secs / 60) + 'm ' + (secs % 60) + 's';
+
+    // Unique words (lowercase, no stop words)
+    const cleaned = words.map(w => w.toLowerCase()).filter(w => w.length > 2 && !STOP.has(w));
+    const freq    = {};
+    cleaned.forEach(w => freq[w] = (freq[w] || 0) + 1);
+    const unique  = Object.keys(freq).length;
+
+    elWords.textContent  = wc.toLocaleString();
+    elChars.textContent  = cc.toLocaleString();
+    elRead.textContent   = readStr;
+    elUnique.textContent = unique.toLocaleString();
+
+    // Density bars (top 8 words)
+    if (unique > 0) {
+      const sorted = Object.entries(freq).sort((a,b) => b[1] - a[1]).slice(0, 8);
+      const maxFreq = sorted[0][1];
+      densityBars.innerHTML = sorted.map(([word, count]) => {
+        const pct = Math.round((count / maxFreq) * 100);
+        return `
+          <div class="density-row">
+            <span class="density-word">${word}</span>
+            <div class="density-bar-wrap">
+              <div class="density-bar-fill" style="width:${pct}%"></div>
+            </div>
+            <span class="density-count">${count}</span>
+          </div>`;
+      }).join('');
+      densityWrap.style.display = 'block';
+    } else {
+      densityWrap.style.display = 'none';
+    }
+  }
+}
+
+/* ── debounce helper (reuse if already defined) ── */
+if (typeof debounce === 'undefined') {
+  function debounce(fn, ms) {
+    let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); };
+  }
+}
+
+/* ── Bootstrap tools after DOM ready ── */
+document.addEventListener('DOMContentLoaded', () => {
+  initPFPGenerator();
+  initWordCounter();
+});
