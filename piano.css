@@ -1,0 +1,170 @@
+/* ============================================================
+   piano.css — Piano Interactivo Multilingüe (Dark / Gold / Neon)
+   ============================================================ */
+
+.interactive-piano-container {
+  --gold: #d4af37;
+  --gold-bright: #f2d475;
+  --neon-cyan: #29e0ff;
+  --bg-deep: #05050a;
+  --bg-panel: #0e0e16;
+  --lcd-bg: #04070c;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  max-width: 880px;
+  margin: 32px auto;
+  padding: 24px;
+  background: radial-gradient(ellipse at top, #14141f 0%, var(--bg-deep) 70%);
+  border: 1px solid rgba(212,175,55,0.25);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 40px rgba(212,175,55,0.06);
+  color: #f5f0e6;
+}
+
+/* ── LCD ─────────────────────────────────────────────────── */
+.piano-lcd {
+  background: linear-gradient(180deg, var(--lcd-bg), #030407);
+  border: 2px solid rgba(212,175,55,0.35);
+  border-radius: 14px;
+  padding: 16px 20px;
+  box-shadow: inset 0 0 25px rgba(0,0,0,0.8), 0 0 18px rgba(212,175,55,0.08);
+  margin-bottom: 20px;
+}
+.lcd-row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.lcd-block { display: flex; flex-direction: column; gap: 4px; min-width: 90px; }
+.lcd-label {
+  font-family: 'Courier New', monospace;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: rgba(212,175,55,0.55);
+  text-transform: uppercase;
+}
+.lcd-value {
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--gold-bright);
+  text-shadow: 0 0 8px rgba(242,212,117,0.5);
+}
+.lcd-value.lcd-next { color: var(--neon-cyan); text-shadow: 0 0 8px rgba(41,224,255,0.5); }
+.lcd-value.lcd-score { color: #7dffb0; text-shadow: 0 0 8px rgba(125,255,176,0.4); }
+.lcd-progress-track {
+  margin-top: 14px; height: 6px; background: rgba(255,255,255,0.06);
+  border-radius: 4px; overflow: hidden;
+}
+.lcd-progress-fill {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--neon-cyan));
+  box-shadow: 0 0 10px rgba(212,175,55,0.6);
+  transition: width 0.4s ease;
+}
+.lcd-status {
+  margin-top: 10px; font-family: 'Courier New', monospace; font-size: 10px;
+  color: rgba(245,240,230,0.5); letter-spacing: 0.04em;
+}
+
+/* ── CONTROLES ───────────────────────────────────────────── */
+.piano-controls {
+  display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 20px;
+}
+.pc-btn {
+  font-family: inherit; font-size: 12px; font-weight: 700; letter-spacing: 0.02em;
+  padding: 10px 18px; border-radius: 999px; border: 1px solid rgba(212,175,55,0.4);
+  background: rgba(255,255,255,0.03); color: #f5f0e6; cursor: pointer;
+  transition: all 0.25s ease;
+}
+.pc-btn:hover { border-color: var(--gold); box-shadow: 0 0 14px rgba(212,175,55,0.25); transform: translateY(-1px); }
+.pc-btn--primary {
+  background: linear-gradient(135deg, var(--gold), #a5771f);
+  color: #1a1305; border: none; box-shadow: 0 4px 18px rgba(212,175,55,0.35);
+}
+.pc-btn--primary:hover { box-shadow: 0 6px 24px rgba(212,175,55,0.55); }
+.pc-btn.is-active { outline: 2px solid var(--neon-cyan); }
+
+/* ── TECLADO ─────────────────────────────────────────────── */
+.piano-keyboard-wrap { overflow-x: auto; padding-bottom: 8px; }
+.piano-keyboard {
+  position: relative; display: flex; height: 190px; min-width: 700px;
+  background: #050508; border-radius: 10px; padding: 6px 6px 0;
+  border: 1px solid rgba(212,175,55,0.15);
+}
+.piano-key {
+  position: relative; user-select: none; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+  padding-bottom: 10px; transition: transform 0.06s ease, box-shadow 0.15s ease;
+}
+.piano-key--white {
+  flex: 1; background: linear-gradient(180deg, #fdfaf2, #e9e2cf);
+  border: 1px solid #0a0a0a; border-radius: 0 0 8px 8px; z-index: 1;
+  box-shadow: inset 0 -6px 10px rgba(0,0,0,0.12);
+  color: #2a2412;
+}
+.piano-key--white:hover { background: linear-gradient(180deg, #fff7de, #f0e8cf); }
+.piano-key--white.is-pressed, .piano-key--white:active {
+  transform: translateY(3px); box-shadow: inset 0 6px 10px rgba(0,0,0,0.25);
+}
+.piano-key--black {
+  position: absolute; top: 6px; width: 34px; height: 118px; z-index: 2;
+  background: linear-gradient(180deg, #1c1c1c, #000);
+  border-radius: 0 0 6px 6px; border: 1px solid #000;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.6);
+  color: #d9d9d9;
+}
+.piano-key--black:hover { background: linear-gradient(180deg, #2b2b2b, #0a0a0a); }
+.piano-key--black.is-pressed, .piano-key--black:active {
+  transform: translateY(3px); box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.piano-key.is-target {
+  animation: keyGlow 0.9s ease-in-out infinite;
+}
+.piano-key--white.is-target { background: linear-gradient(180deg, #fff2c2, #f3d98a); }
+.piano-key--black.is-target { background: linear-gradient(180deg, #6b551a, #3a2d0a); }
+@keyframes keyGlow {
+  0%, 100% { box-shadow: 0 0 12px rgba(212,175,55,0.5), 0 0 0 rgba(41,224,255,0); }
+  50% { box-shadow: 0 0 28px rgba(212,175,55,0.9), 0 0 18px rgba(41,224,255,0.4); }
+}
+
+.key-label-main { font-size: 13px; font-weight: 800; }
+.key-label-intl { font-size: 9px; opacity: 0.75; margin-top: 2px; line-height: 1.3; text-align: center; }
+.piano-key--black .key-label-main { font-size: 10px; }
+
+/* ── PARTÍCULAS ──────────────────────────────────────────── */
+.key-particle {
+  position: absolute; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--gold-bright); pointer-events: none; z-index: 5;
+  box-shadow: 0 0 8px rgba(242,212,117,0.9);
+  animation: particleBurst 0.7s ease-out forwards;
+}
+@keyframes particleBurst {
+  0% { opacity: 1; transform: translate(0,0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.3); }
+}
+
+/* ── CTAs ────────────────────────────────────────────────── */
+.piano-cta-zone { margin-top: 24px; display: flex; flex-direction: column; gap: 12px; }
+.cta-gold, .cta-secondary {
+  display: block; text-align: center; text-decoration: none; font-weight: 800;
+  padding: 14px 20px; border-radius: 14px; font-size: 14px; letter-spacing: 0.01em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.cta-gold {
+  background: linear-gradient(135deg, var(--gold-bright), var(--gold), #8a6416);
+  color: #1a1305; box-shadow: 0 6px 20px rgba(212,175,55,0.4);
+}
+.cta-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(212,175,55,0.6); }
+.cta-secondary {
+  background: rgba(41,224,255,0.08); color: var(--neon-cyan);
+  border: 1px solid rgba(41,224,255,0.35);
+}
+.cta-secondary:hover { background: rgba(41,224,255,0.15); box-shadow: 0 0 18px rgba(41,224,255,0.3); }
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .interactive-piano-container { padding: 16px; border-radius: 16px; }
+  .lcd-value { font-size: 15px; }
+  .piano-controls { gap: 8px; }
+  .pc-btn { font-size: 11px; padding: 8px 14px; }
+  .piano-keyboard { height: 150px; min-width: 620px; }
+  .piano-key--black { height: 92px; width: 28px; }
+  .key-label-intl { font-size: 8px; }
+}

@@ -8,6 +8,7 @@
   <meta property="og:title" content="Language Resource Hub 2.0" />
   <meta property="og:description" content="20 recursos premium para aprender idiomas. Kits PDF gratis, tutores Preply y audio nativo." />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="piano.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -44,6 +45,7 @@
       <li><a href="#recursos" data-i18n="nav_resources">Recursos</a></li>
       <li><a href="#audio"    data-i18n="nav_audio">Audio Nativo</a></li>
       <li><a href="#quiz"     data-i18n="nav_quiz">Quiz</a></li>
+      <li><a href="#piano-section">🎹 Piano</a></li>
       <li><a href="#tools"    data-i18n="nav_tools">🛠️ Tools</a></li>
       <li>
         <a href="https://preply.sjv.io/c/7528742/1987575/24422"
@@ -294,19 +296,61 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════
-     ADSENSE BANNER — entre Quiz y Tools
+     PIANO INTERACTIVO MULTILINGÜE (Für Elise + ClickBank + Preply)
      ═══════════════════════════════════════════════ -->
-<div class="adsense-block" aria-label="Publicidad">
-  <div class="container" style="text-align:center;padding:12px 0">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-         data-ad-slot="1234567890"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+<section id="piano-section" class="section" aria-label="Piano Interactivo Multilingüe">
+  <div class="container">
+    <div class="interactive-piano-container" id="pianoRoot">
+
+      <!-- ── LCD DIGITAL ─────────────────────────────────────── -->
+      <div class="piano-lcd">
+        <div class="lcd-row lcd-top">
+          <div class="lcd-block">
+            <span class="lcd-label">NOTA ACTUAL</span>
+            <span class="lcd-value" id="lcdCurrentNote">— · — · —</span>
+          </div>
+          <div class="lcd-block">
+            <span class="lcd-label">SIGUIENTE</span>
+            <span class="lcd-value lcd-next" id="lcdNextNote">—</span>
+          </div>
+          <div class="lcd-block">
+            <span class="lcd-label">PUNTAJE</span>
+            <span class="lcd-value lcd-score" id="lcdScore">0</span>
+          </div>
+        </div>
+        <div class="lcd-progress-track">
+          <div class="lcd-progress-fill" id="lcdProgressFill"></div>
+        </div>
+        <div class="lcd-status" id="lcdStatus">MODO LIBRE — Toca cualquier tecla para comenzar</div>
+      </div>
+
+      <!-- ── CONTROLES ───────────────────────────────────────── -->
+      <div class="piano-controls">
+        <button class="pc-btn pc-btn--primary" id="btnStartLesson">▶ Iniciar Lección Guiada</button>
+        <button class="pc-btn" id="btnDemo">🎧 Escuchar Demo Automática</button>
+        <button class="pc-btn" id="btnFreeMode">🎹 Modo Libre</button>
+      </div>
+
+      <!-- ── TECLADO ─────────────────────────────────────────── -->
+      <div class="piano-keyboard-wrap">
+        <div class="piano-keyboard" id="pianoKeyboard">
+          <!-- Generado dinámicamente por JS -->
+        </div>
+      </div>
+
+      <!-- ── CTAs DE CONVERSIÓN ──────────────────────────────── -->
+      <div class="piano-cta-zone">
+        <a class="cta-gold" href="https://7cf44lrrjjzeu57nx7kjr9ohfn.hop.clickbank.net" target="_blank" rel="noopener noreferrer">
+          🎓 ¿Quieres tocar piano fluido en 30 días? Conoce el Método Piano For All →
+        </a>
+        <a class="cta-secondary" href="https://preply.sjv.io/c/7528742/1987575/24422" target="_blank" rel="noopener noreferrer">
+          🗣️ Aprende Francés, Japonés o Coreano con Tutores Nativos en Preply →
+        </a>
+      </div>
+
+    </div>
   </div>
-</div>
+</section>
 
 <!-- ═══════════════════════════════════════════════
      UTILITY SECTION — PFP Generator + Word Counter
@@ -456,5 +500,6 @@
 </footer>
 
 <script src="app.js"></script>
+<script src="piano.js"></script>
 </body>
 </html>
