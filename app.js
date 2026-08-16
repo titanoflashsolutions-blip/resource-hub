@@ -216,6 +216,7 @@ const RESOURCES = [
   {
     id: 2, hero: false, icon: '🇰🇷',
     iconBg: 'linear-gradient(135deg,#C0392B,#E74C3C)',
+    img: 'assets/img/thumb-kr-kit.jpg',
     category: 'kit', langCodes: ['kr'],
     name:    { es: 'Kit Coreano Express — Descarga Gratis', en: 'Korean Express Kit — Free Download' },
     tagline: { es: 'Guía completa: Hangul + 100 frases esenciales + planificador 30 días. PDF descarga instantánea.',
@@ -232,6 +233,7 @@ const RESOURCES = [
   {
     id: 3, hero: false, icon: '🇯🇵',
     iconBg: 'linear-gradient(135deg,#DC2626,#B91C1C)',
+    img: 'assets/img/thumb-jp-kit.jpg',
     category: 'kit', langCodes: ['jp'],
     name:    { es: 'Kit Japonés Express — Descarga Gratis', en: 'Japanese Express Kit — Free Download' },
     tagline: { es: 'Hiragana + Katakana + 50 frases de supervivencia. Todo lo que necesitas para comenzar ya.',
@@ -248,6 +250,7 @@ const RESOURCES = [
   {
     id: 4, hero: false, icon: '🇫🇷',
     iconBg: 'linear-gradient(135deg,#1A3A6B,#1E3A8A)',
+    img: 'assets/img/thumb-fr-kit.jpg',
     category: 'kit', langCodes: ['fr'],
     name:    { es: 'Kit Francés Express — Descarga Gratis', en: 'French Express Kit — Free Download' },
     tagline: { es: 'Pronunciación francesa + vocabulario clave + 50 frases reales. El inicio perfecto.',
@@ -266,6 +269,7 @@ const RESOURCES = [
   {
     id: 5, hero: false, icon: '🇰🇷',
     iconBg: 'linear-gradient(135deg,#F59E0B,#B45309)',
+    img: 'assets/img/thumb-kr-tutor.jpg',
     category: 'tutors', langCodes: ['kr'],
     name:    { es: 'Tutores de Coreano en Preply',       en: 'Korean Tutors on Preply' },
     tagline: { es: 'Tutores nativos certificados. Coreano desde K-Pop hasta negocios. Primera lección a precio especial.',
@@ -282,6 +286,7 @@ const RESOURCES = [
   {
     id: 6, hero: false, icon: '🇯🇵',
     iconBg: 'linear-gradient(135deg,#F59E0B,#92400E)',
+    img: 'assets/img/thumb-jp-tutor.jpg',
     category: 'tutors', langCodes: ['jp'],
     name:    { es: 'Tutores de Japonés en Preply',       en: 'Japanese Tutors on Preply' },
     tagline: { es: 'Aprende Hiragana, Kanji y conversación con tutores japoneses nativos. Garantía de resultado.',
@@ -298,6 +303,7 @@ const RESOURCES = [
   {
     id: 7, hero: false, icon: '🇫🇷',
     iconBg: 'linear-gradient(135deg,#F59E0B,#B45309)',
+    img: 'assets/img/thumb-fr-tutor.jpg',
     category: 'tutors', langCodes: ['fr'],
     name:    { es: 'Tutores de Francés en Preply',       en: 'French Tutors on Preply' },
     tagline: { es: 'Habla francés fluido con tutores parisinos nativos. Pronunciación perfecta garantizada.',
@@ -315,6 +321,7 @@ const RESOURCES = [
   {
     id: 8, hero: false, icon: '📚',
     iconBg: 'linear-gradient(135deg,#6366F1,#4F46E5)',
+    img: 'assets/img/thumb-planner.jpg',
     category: 'kit', langCodes: ['kr','jp','fr'],
     name:    { es: 'Kit Organizador Estudiantil & Universidad 2026', en: 'Ultimate College & Dorm Study Planner 2026' },
     tagline: { es: 'Checklist de residencia + organizador de horarios + habit tracker en PDF. 100% gratis.',
@@ -330,6 +337,7 @@ const RESOURCES = [
   {
     id: 9, hero: false, icon: '🛠️',
     iconBg: 'linear-gradient(135deg,#D97706,#B45309)',
+    img: 'assets/img/thumb-shed.jpg',
     category: 'kit', langCodes: ['kr','jp','fr'],
     name:    { es: 'My Shed Plans — 12,000 Planos de Carpintería',  en: 'My Shed Plans — 12,000 Woodworking Plans' },
     tagline: { es: 'Guías de bricolaje paso a paso para construir cobertizos, muebles y proyectos de madera en casa.',
@@ -548,6 +556,11 @@ function renderCards() {
   grid.innerHTML = filtered.map((r, i) => `
     <article class="resource-card${r.hero ? ' hero-card' : ''}"
              style="animation-delay:${i * 0.07}s">
+      ${r.img ? `
+      <div class="card-thumb-wrap">
+        <img src="${r.img}" alt="${r.name[lang]}" class="card-thumb-img" loading="lazy" />
+        <div class="card-thumb-overlay"></div>
+      </div>` : ''}
       <div class="card-header">
         <div class="card-icon" style="background:${r.iconBg}">${r.icon}</div>
         <div class="card-badges">
