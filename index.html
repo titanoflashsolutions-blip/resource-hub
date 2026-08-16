@@ -131,13 +131,48 @@
       </div>
     </div>
 
+    <!-- ── SOCIAL PROOF TRUST BAR ──────────────────── -->
+    <div class="trust-bar">
+      <div class="trust-avatars">
+        <div class="trust-avatar" style="background:linear-gradient(135deg,#F59E0B,#D97706)">👩‍🏫</div>
+        <div class="trust-avatar" style="background:linear-gradient(135deg,#8B5CF6,#6D28D9)">👨‍💻</div>
+        <div class="trust-avatar" style="background:linear-gradient(135deg,#10B981,#059669)">👩‍🎓</div>
+        <div class="trust-avatar" style="background:linear-gradient(135deg,#0EA5E9,#0284C7)">👨‍💼</div>
+        <div class="trust-avatar" style="background:linear-gradient(135deg,#F43F5E,#E11D48)">🧑‍🎨</div>
+      </div>
+      <div class="trust-stars">
+        <span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span>
+      </div>
+      <div class="trust-text">
+        <strong id="trust-count">1,420+</strong> estudiantes satisfechos · <strong>4.9/5</strong> promedio
+      </div>
+    </div>
+
   </div>
 </header>
 
 <!-- ═══════════════════════════════════════════════
-     PREPLY HERO BANNER
+     CINEMATIC HERO PHOTO
      ═══════════════════════════════════════════════ -->
-<section aria-label="Preply — Tutor Recomendado" style="padding:0 0 0">
+<div class="hero-photo-section">
+  <div class="hero-photo-inner">
+    <img src="assets/img/hero-tutor.jpg"
+         alt="Tutor nativo en videollamada 1-a-1 con estudiante"
+         class="hero-photo-img"
+         loading="lazy" />
+    <div class="hero-photo-overlay">
+      <div class="hero-photo-badge">
+        <span class="live-dot"></span>
+        <span>🎓 Sesión en vivo ahora</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PREPLY HERO BANNER (con foto + prueba social)
+     ═══════════════════════════════════════════════ -->
+<section aria-label="Preply — Tutor Recomendado" class="preply-section">
   <div class="container">
     <div class="preply-banner">
       <div class="preply-left">
@@ -173,17 +208,71 @@
         </a>
       </div>
 
-      <div class="preply-right">
-        <div class="preply-commission">
-          <div class="commission-num">50%</div>
-          <div class="commission-label" data-i18n="preply_comm_label">Clase de Prueba</div>
-          <div style="margin-top:12px;font-size:0.82rem;color:#94A3B8" data-i18n="preply_comm_note">
-            Empieza hoy sin compromiso
+      <!-- PHOTO SIDE — hero tutor/student image -->
+      <div class="preply-right preply-photo-side">
+        <div class="preply-img-wrap">
+          <img src="assets/img/hero-tutor.jpg"
+               alt="Profesor nativo en sesión 1-a-1 con estudiante en Preply"
+               class="preply-photo"
+               loading="lazy" />
+          <div class="preply-img-badge">
+            <div class="commission-num">50%</div>
+            <div class="commission-label" data-i18n="preply_comm_label">Clase de Prueba</div>
+            <div style="margin-top:6px;font-size:0.82rem;color:#94A3B8" data-i18n="preply_comm_note">Empieza hoy sin compromiso</div>
+            <div style="margin-top:8px;font-size:0.95rem;font-weight:700;color:#F59E0B" data-i18n="preply_comm_badge">🔥 OFERTA LIMITADA</div>
           </div>
-          <div style="margin-top:10px;font-size:1rem;font-weight:700;color:#F59E0B"
-               data-i18n="preply_comm_badge">🔥 OFERTA LIMITADA</div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     DESTINATION BANNERS (KR / JP / FR)
+     ═══════════════════════════════════════════════ -->
+<section class="destination-banners" aria-label="Destinos de idiomas">
+  <div class="container">
+    <div class="dest-grid">
+
+      <a href="https://saludfuturo.gumroad.com/l/pzbjtk" target="_blank" rel="noopener"
+         class="dest-card" aria-label="Coreano — Seúl">
+        <img src="assets/img/banner-kr.jpg" alt="Seúl, Corea del Sur" class="dest-img" loading="lazy" />
+        <div class="dest-overlay">
+          <div class="dest-flag">🇰🇷</div>
+          <div class="dest-info">
+            <h3 class="dest-title">Coreano</h3>
+            <p class="dest-sub">Seúl · K-pop · K-drama</p>
+          </div>
+          <div class="dest-cta">Kit Gratis →</div>
+        </div>
+      </a>
+
+      <a href="https://saludfuturo.gumroad.com/l/citnbf" target="_blank" rel="noopener"
+         class="dest-card" aria-label="Japonés — Tokio">
+        <img src="assets/img/banner-jp.jpg" alt="Tokio, Japón" class="dest-img" loading="lazy" />
+        <div class="dest-overlay">
+          <div class="dest-flag">🇯🇵</div>
+          <div class="dest-info">
+            <h3 class="dest-title">Japonés</h3>
+            <p class="dest-sub">Tokio · Anime · Cultura</p>
+          </div>
+          <div class="dest-cta">Kit Gratis →</div>
+        </div>
+      </a>
+
+      <a href="https://saludfuturo.gumroad.com/l/qekjnb" target="_blank" rel="noopener"
+         class="dest-card" aria-label="Francés — París">
+        <img src="assets/img/banner-fr.jpg" alt="París, Francia" class="dest-img" loading="lazy" />
+        <div class="dest-overlay">
+          <div class="dest-flag">🇫🇷</div>
+          <div class="dest-info">
+            <h3 class="dest-title">Francés</h3>
+            <p class="dest-sub">París · Lifestyle · Gastronomía</p>
+          </div>
+          <div class="dest-cta">Kit Gratis →</div>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
