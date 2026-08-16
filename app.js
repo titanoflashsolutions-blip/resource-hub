@@ -81,6 +81,21 @@ const T = {
     wc_density_title: '📊 Top Palabras',
     wc_cta_text: 'Aprende a redactar mejor en coreano, japonés o francés.',
     wc_cta_btn: '🎓 Clases con Tutor Nativo →',
+    tp_badge: 'Curado con IA · Experiencias reales',
+    tp_title: 'Diseña tu viaje perfecto en Japón, Corea del Sur o Francia',
+    tp_step1: 'Destino', tp_step2: 'Duración', tp_step3: 'Interés',
+    tp_label_dest: 'Destino', tp_label_dur: 'Duración', tp_label_int: 'Interés Principal',
+    tp_btn_generate: '⚡ Generar Mi Itinerario Personalizado',
+    tp_top_picks: 'Experiencias que encajan con tu estilo',
+    tp_pick1: 'Tour guiado, gastronomía local y skyline nocturno',
+    tp_pick2: 'Rutas inteligentes por ciudad y paisajes emblemáticos',
+    tp_pick3: 'Frases útiles para comunicarte con confianza',
+    tp_cta_preply: '🎓 ¿Viajas pronto? Domina las frases básicas con un tutor nativo en Preply antes de tu vuelo →',
+    tp_cta_gumroad: '📥 Descarga tu Guía de Supervivencia para Viajeros en PDF Gratis →',
+    tp_opt_jp: '🇯🇵 Japón', tp_opt_kr: '🇰🇷 Corea del Sur', tp_opt_fr: '🇫🇷 Francia',
+    tp_dur_3: '3 Días (Express)', tp_dur_5: '5 Días (Esencial)', tp_dur_7: '7 Días (Inmersión Total)',
+    tp_int_culture: '🏯 Cultura & Templos', tp_int_food: '🍜 Gastronomía & Street Food',
+    tp_int_shopping: '🛍️ Compras & Moda / K-Pop & Anime', tp_int_nature: '🌲 Naturaleza & Paisajes',
   },
   en: {
     nav_resources: 'Resources', nav_audio: 'Native Audio',
@@ -124,7 +139,7 @@ const T = {
     footer_note: '· Some links are affiliate links (no extra cost to you)',
     nav_tools: '🛠️ Tools',
     tools_title_1: '🛠️ Free', tools_title_2: 'Tools',
-    tools_subtitle: '2 interactive apps · No sign-up needed',
+    tools_subtitle: '3 interactive apps · No sign-up needed',
     pfp_title: 'Aesthetic PFP Generator',
     pfp_desc: 'Turn your photo into an avatar with anime, neon, vintage filters & more. 100% in your browser — no data uploaded.',
     pfp_upload: 'Click or drag your image here',
@@ -141,6 +156,21 @@ const T = {
     wc_density_title: '📊 Top Words',
     wc_cta_text: 'Learn to write better in Korean, Japanese or French.',
     wc_cta_btn: '🎓 Classes with Native Tutor →',
+    tp_badge: 'AI Curated · Real Travel Experiences',
+    tp_title: 'Plan Your Perfect Trip to Japan, South Korea or France',
+    tp_step1: 'Destination', tp_step2: 'Duration', tp_step3: 'Interest',
+    tp_label_dest: 'Destination', tp_label_dur: 'Duration', tp_label_int: 'Main Interest',
+    tp_btn_generate: '⚡ Generate My Custom Itinerary',
+    tp_top_picks: 'Experiences tailored to your style',
+    tp_pick1: 'Guided tours, authentic food & nighttime skyline',
+    tp_pick2: 'Smart routes across iconic landmarks and cities',
+    tp_pick3: 'Essential local phrases to speak with confidence',
+    tp_cta_preply: '🎓 Traveling soon? Master basic phrases with a native tutor on Preply before departure →',
+    tp_cta_gumroad: '📥 Download Your Free Traveler Survival PDF Guide →',
+    tp_opt_jp: '🇯🇵 Japan', tp_opt_kr: '🇰🇷 South Korea', tp_opt_fr: '🇫🇷 France',
+    tp_dur_3: '3 Days (Express)', tp_dur_5: '5 Days (Essential)', tp_dur_7: '7 Days (Total Immersion)',
+    tp_int_culture: '🏯 Culture & Temples', tp_int_food: '🍜 Gastronomy & Street Food',
+    tp_int_shopping: '🛍️ Shopping & Fashion / K-Pop & Anime', tp_int_nature: '🌲 Nature & Scenic Landscapes',
   }
 };
 
@@ -422,6 +452,9 @@ function switchLanguage(lang) {
   renderCards();
   renderAudioPhrases(state.currentAudioLang);
   renderQuiz();
+  if (typeof window.regenerateTravelPlanner === 'function') {
+    window.regenerateTravelPlanner();
+  }
 }
 
 function updateLangButtons() {

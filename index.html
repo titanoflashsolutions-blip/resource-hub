@@ -470,9 +470,9 @@
             <header class="planner-header">
               <div class="planner-header-copy">
                 <span class="eyebrow">✈️ AI Travel Planner 2026</span>
-                <h2>Diseña tu viaje perfecto en Japón, Corea del Sur o Francia</h2>
+                <h2 data-i18n="tp_title">Diseña tu viaje perfecto en Japón, Corea del Sur o Francia</h2>
               </div>
-              <div class="planner-badge">Curado con IA · Experiencias reales</div>
+              <div class="planner-badge" data-i18n="tp_badge">Curado con IA · Experiencias reales</div>
             </header>
 
             <div class="planner-layout">
@@ -480,53 +480,53 @@
                 <div class="form-steps">
                   <div class="step active">
                     <span>01</span>
-                    <small>Destino</small>
+                    <small data-i18n="tp_step1">Destino</small>
                   </div>
                   <div class="step">
                     <span>02</span>
-                    <small>Duración</small>
+                    <small data-i18n="tp_step2">Duración</small>
                   </div>
                   <div class="step">
                     <span>03</span>
-                    <small>Interés</small>
+                    <small data-i18n="tp_step3">Interés</small>
                   </div>
                 </div>
 
                 <div class="field-group">
-                  <label for="destinationSelect">Destino</label>
+                  <label for="destinationSelect" data-i18n="tp_label_dest">Destino</label>
                   <div class="select-wrap">
                     <select id="destinationSelect" name="destination">
-                      <option value="japan">🇯🇵 Japón</option>
-                      <option value="korea">🇰🇷 Corea del Sur</option>
-                      <option value="france">🇫🇷 Francia</option>
+                      <option value="japan" data-i18n="tp_opt_jp">🇯🇵 Japón</option>
+                      <option value="korea" data-i18n="tp_opt_kr">🇰🇷 Corea del Sur</option>
+                      <option value="france" data-i18n="tp_opt_fr">🇫🇷 Francia</option>
                     </select>
                   </div>
                 </div>
 
                 <div class="field-group">
-                  <label for="durationSelect">Duración</label>
+                  <label for="durationSelect" data-i18n="tp_label_dur">Duración</label>
                   <div class="select-wrap">
                     <select id="durationSelect" name="duration">
-                      <option value="3">3 Días (Express)</option>
-                      <option value="5" selected>5 Días (Esencial)</option>
-                      <option value="7">7 Días (Inmersión Total)</option>
+                      <option value="3" data-i18n="tp_dur_3">3 Días (Express)</option>
+                      <option value="5" selected data-i18n="tp_dur_5">5 Días (Esencial)</option>
+                      <option value="7" data-i18n="tp_dur_7">7 Días (Inmersión Total)</option>
                     </select>
                   </div>
                 </div>
 
                 <div class="field-group">
-                  <label for="interestSelect">Interés Principal</label>
+                  <label for="interestSelect" data-i18n="tp_label_int">Interés Principal</label>
                   <div class="select-wrap">
                     <select id="interestSelect" name="interest">
-                      <option value="culture">🏯 Cultura & Templos</option>
-                      <option value="food">🍜 Gastronomía & Street Food</option>
-                      <option value="shopping">🛍️ Compras & Moda / K-Pop & Anime</option>
-                      <option value="nature">🌲 Naturaleza & Paisajes</option>
+                      <option value="culture" data-i18n="tp_int_culture">🏯 Cultura & Templos</option>
+                      <option value="food" data-i18n="tp_int_food">🍜 Gastronomía & Street Food</option>
+                      <option value="shopping" data-i18n="tp_int_shopping">🛍️ Compras & Moda / K-Pop & Anime</option>
+                      <option value="nature" data-i18n="tp_int_nature">🌲 Naturaleza & Paisajes</option>
                     </select>
                   </div>
                 </div>
 
-                <button type="submit" class="primary-btn">
+                <button type="submit" class="primary-btn" data-i18n="tp_btn_generate">
                   ⚡ Generar Mi Itinerario Personalizado
                 </button>
               </form>
@@ -534,11 +534,11 @@
               <aside class="planner-side-panel">
                 <div class="mini-card feature">
                   <span class="tag">Top picks</span>
-                  <h3>Experiencias que encajan con tu estilo</h3>
+                  <h3 data-i18n="tp_top_picks">Experiencias que encajan con tu estilo</h3>
                   <ul>
-                    <li>Tour guiado, gastronomía local y skyline nocturno</li>
-                    <li>Rutas inteligentes por ciudad y paisajes emblemáticos</li>
-                    <li>Frases útiles para comunicarte con confianza</li>
+                    <li data-i18n="tp_pick1">Tour guiado, gastronomía local y skyline nocturno</li>
+                    <li data-i18n="tp_pick2">Rutas inteligentes por ciudad y paisajes emblemáticos</li>
+                    <li data-i18n="tp_pick3">Frases útiles para comunicarte con confianza</li>
                   </ul>
                 </div>
 
@@ -548,6 +548,7 @@
                     class="gold-link"
                     target="_blank"
                     rel="noopener"
+                    data-i18n="tp_cta_preply"
                   >
                     🎓 ¿Viajas pronto? Domina las frases básicas con un tutor nativo en Preply antes de tu vuelo →
                   </a>
@@ -557,6 +558,7 @@
                     class="secondary-link"
                     target="_blank"
                     rel="noopener"
+                    data-i18n="tp_cta_gumroad"
                   >
                     📥 Descarga tu Guía de Supervivencia para Viajeros en PDF Gratis →
                   </a>
