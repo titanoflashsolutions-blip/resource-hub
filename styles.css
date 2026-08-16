@@ -56,17 +56,26 @@ body {
   min-height: 100vh;
 }
 
-/* ── Animated Background ───────────────────────────────────────── */
+/* ── Animated Travel Aurora Background ─────────────────────────── */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 20% 0%, rgba(139,92,246,0.12) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 50% at 80% 10%, rgba(245,158,11,0.08) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(16,185,129,0.07) 0%, transparent 50%);
+    radial-gradient(ellipse 90% 70% at 15% 10%, rgba(139,92,246,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 60% at 85% 20%, rgba(245,158,11,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 60% at 50% 85%, rgba(16,185,129,0.13) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 90% 90%, rgba(14,165,233,0.12) 0%, transparent 50%);
+  background-size: 200% 200%;
+  animation: auroraFlow 18s ease-in-out infinite alternate;
   pointer-events: none;
   z-index: 0;
+}
+
+@keyframes auroraFlow {
+  0%   { background-position: 0% 0%; }
+  50%  { background-position: 100% 100%; }
+  100% { background-position: 50% 0%; }
 }
 
 /* ── Scrollbar ─────────────────────────────────────────────────── */
@@ -1116,19 +1125,75 @@ body::before {
 /* ══════════════════════════════════════════════════════════════════
    PREPLY HERO BANNER
    ══════════════════════════════════════════════════════════════════ */
-.preply-banner {
-  background: linear-gradient(135deg, rgba(245,158,11,0.12), rgba(245,158,11,0.05));
-  border: 1px solid rgba(245,158,11,0.3);
-  border-radius: var(--radius-xl);
-  padding: 40px 48px;
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  margin-bottom: 64px;
-  box-shadow: 0 0 60px rgba(245,158,11,0.08);
+.preply-section {
+  padding: 20px 0 40px;
 }
 
-.preply-left { flex: 1; }
+.preply-banner {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.95));
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: stretch;
+  margin-bottom: 48px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 50px rgba(245, 158, 11, 0.1);
+  position: relative;
+}
+
+.preply-left {
+  padding: 44px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 2;
+}
+
+.preply-right.preply-photo-side {
+  position: relative;
+  min-height: 380px;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.preply-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  overflow: hidden;
+}
+
+.preply-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: brightness(0.95) saturate(1.1);
+  transition: transform 0.6s ease;
+}
+
+.preply-banner:hover .preply-photo {
+  transform: scale(1.04);
+}
+
+.preply-img-badge {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: var(--radius-md);
+  padding: 14px 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  z-index: 3;
+}
 
 .preply-eyebrow {
   display: inline-flex;
@@ -2029,256 +2094,22 @@ footer a:hover { text-decoration: underline; }
   50% { transform: scale(1.4); opacity: 0.6; }
 }
 
-/* ── Preply Section overrides ────────────────────────────── */
-.preply-section { padding: 0; }
-
-.preply-photo-side { padding: 0 !important; overflow: hidden; }
-
-.preply-img-wrap {
-  position: relative;
-  height: 100%;
-  min-height: 320px;
-  border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
-  overflow: hidden;
-}
-.preply-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
-  display: block;
-  filter: brightness(0.75) saturate(1.15);
-  transition: transform 0.6s ease, filter 0.4s;
-}
-.preply-img-wrap:hover .preply-photo {
-  transform: scale(1.04);
-  filter: brightness(0.85) saturate(1.3);
-}
-.preply-img-badge {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  background: rgba(15,23,42,0.82);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(245,158,11,0.3);
-  border-radius: var(--radius-lg);
-  padding: 16px 20px;
-  text-align: center;
-  min-width: 150px;
-}
-.commission-num {
-  font-family: 'Outfit', sans-serif;
-  font-size: 2.8rem;
-  font-weight: 900;
-  background: linear-gradient(135deg, var(--gold), var(--gold-light));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1;
-}
-
-/* ── Destination Photo Banners ───────────────────────────── */
-.destination-banners {
-  padding: 60px 0;
-  position: relative;
-}
-.dest-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-.dest-card {
-  position: relative;
-  display: block;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  aspect-ratio: 4/3;
-  text-decoration: none;
-  border: 1px solid var(--border-glass);
-  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1),
-              box-shadow 0.35s ease,
-              border-color 0.3s;
-  cursor: pointer;
-}
-.dest-card:hover {
-  transform: translateY(-8px) scale(1.01);
-  box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 2px rgba(245,158,11,0.4);
-  border-color: rgba(245,158,11,0.5);
-}
-.dest-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: brightness(0.72) saturate(1.2);
-  transition: transform 0.6s ease, filter 0.4s;
-}
-.dest-card:hover .dest-img {
-  transform: scale(1.08);
-  filter: brightness(0.85) saturate(1.4);
-}
-.dest-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(15,23,42,0.92) 0%,
-    rgba(15,23,42,0.4) 50%,
-    rgba(15,23,42,0.1) 100%
-  );
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 22px 20px;
-  gap: 6px;
-  transition: background 0.3s;
-}
-.dest-card:hover .dest-overlay {
-  background: linear-gradient(
-    to top,
-    rgba(15,23,42,0.98) 0%,
-    rgba(15,23,42,0.5) 60%,
-    rgba(15,23,42,0.1) 100%
-  );
-}
-.dest-flag {
-  font-size: 2rem;
-  line-height: 1;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
-  transition: transform 0.3s;
-}
-.dest-card:hover .dest-flag { transform: scale(1.15) rotate(-5deg); }
-.dest-info { flex: 1; }
-.dest-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #F1F5F9;
-  line-height: 1.1;
-  margin: 0;
-  letter-spacing: -0.02em;
-}
-.dest-sub {
-  font-size: 0.78rem;
-  color: rgba(241,245,249,0.65);
-  margin: 4px 0 0;
-}
-.dest-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background: linear-gradient(135deg, var(--gold), #D97706);
-  color: #0F172A;
-  font-weight: 700;
-  font-size: 0.78rem;
-  padding: 6px 14px;
-  border-radius: 100px;
-  transform: translateY(4px);
-  opacity: 0;
-  transition: opacity 0.3s, transform 0.3s;
-}
-.dest-card:hover .dest-cta {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ── Enhanced Resource Card Hover (golden glow) ──────────── */
-.resource-card {
-  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1),
-              box-shadow 0.3s ease,
-              border-color 0.3s !important;
-}
-.resource-card:hover {
-  transform: translateY(-6px) !important;
-  box-shadow:
-    0 20px 50px rgba(0,0,0,0.5),
-    0 0 0 1px rgba(245,158,11,0.35),
-    0 0 30px rgba(245,158,11,0.1) !important;
-  border-color: rgba(245,158,11,0.4) !important;
-}
-
-/* Animated badge pulse for hot offers */
-.badge-rose,
-.badge-gold {
-  animation: badgePulse 2.5s ease-in-out infinite;
-}
-@keyframes badgePulse {
-  0%, 100% { box-shadow: none; transform: scale(1); }
-  50% { box-shadow: 0 0 12px rgba(245,158,11,0.45); transform: scale(1.04); }
-}
-
-/* ── Preply CTA glow on hover ────────────────────────────── */
-.preply-cta {
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.25s, box-shadow 0.25s !important;
-}
-.preply-cta::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%);
-  transform: translateX(-100%);
-  transition: transform 0.5s;
-}
-.preply-cta:hover::after { transform: translateX(100%); }
-.preply-cta:hover {
-  transform: translateY(-2px) scale(1.02) !important;
-  box-shadow: 0 8px 30px rgba(245,158,11,0.4) !important;
-}
-
-/* ── Card Thumbnail Photo Strip ──────────────────────────── */
-.card-thumb-wrap {
-  position: relative;
-  width: calc(100% + 48px);
-  margin: -24px -24px 16px -24px;
-  height: 140px;
-  overflow: hidden;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.card-thumb-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s ease;
-}
-
-.resource-card:hover .card-thumb-img {
-  transform: scale(1.06);
-}
-
-.card-thumb-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(15,23,42,0.05) 0%, rgba(15,23,42,0.7) 100%);
-  pointer-events: none;
-}
-
 /* ── Clean Hero & Preply Photo Visibility ─────────────────── */
 .preply-photo {
   filter: brightness(0.95) saturate(1.05) !important;
 }
 
-.preply-img-badge {
-  background: rgba(15, 23, 42, 0.75) !important;
-  backdrop-filter: blur(8px) !important;
-  bottom: 14px !important;
-  right: 14px !important;
-  padding: 12px 18px !important;
-}
-
 /* ── Responsive Adjustments ──────────────────────────────── */
 @media (max-width: 900px) {
+  .preply-banner { grid-template-columns: 1fr; }
+  .preply-right.preply-photo-side { min-height: 280px; }
   .dest-grid { grid-template-columns: 1fr; gap: 16px; }
   .dest-card { aspect-ratio: 16/7; }
   .hero-photo-img { height: 280px; }
-  .preply-img-wrap { min-height: 260px; border-radius: 0 0 var(--radius-xl) var(--radius-xl); }
+  .preply-img-wrap { min-height: 260px; }
 }
 @media (max-width: 640px) {
   .trust-bar { border-radius: var(--radius-xl); padding: 12px 16px; gap: 10px; }
   .dest-card { aspect-ratio: 16/8; }
-  .hero-photo-section { max-height: 240px; }
-  .hero-photo-img { height: 240px; }
+  .preply-left { padding: 28px 20px; }
 }
