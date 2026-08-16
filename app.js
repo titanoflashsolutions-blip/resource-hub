@@ -86,6 +86,17 @@ const T = {
     dest_title_kr: 'Coreano', dest_sub_kr: 'Seúl · K-pop · K-drama', dest_cta_kr: 'Kit Gratis →',
     dest_title_jp: 'Japonés', dest_sub_jp: 'Tokio · Anime · Cultura', dest_cta_jp: 'Kit Gratis →',
     dest_title_fr: 'Francés', dest_sub_fr: 'París · Lifestyle · Gastronomía', dest_cta_fr: 'Kit Gratis →',
+    piano_song_kr: '🇰🇷 Arirang (Coreano)',
+    piano_song_jp: '🇯🇵 Sakura Sakura (Japonés)',
+    piano_song_fr: '🇫🇷 Frère Jacques (Francés)',
+    piano_lcd_note: 'NOTA ACTUAL',
+    piano_lcd_next: 'SIGUIENTE',
+    piano_lcd_score: 'PUNTAJE',
+    piano_status_free: 'MODO LIBRE — Selecciona una canción o toca libremente',
+    piano_btn_lesson: '▶ Iniciar Lección Guiada',
+    piano_btn_demo: '🎧 Escuchar Demo Automática',
+    piano_btn_free: '🎹 Modo Libre',
+    piano_cta_preply: '🎓 ¿Quieres dominar Coreano, Japonés o Francés? Reserva tu Clase de Prueba con un Tutor Nativo en Preply →',
     tp_badge: 'Curado con IA · Experiencias reales',
     tp_title: 'Diseña tu viaje perfecto en Japón, Corea del Sur o Francia',
     tp_step1: 'Destino', tp_step2: 'Duración', tp_step3: 'Interés',
@@ -166,6 +177,17 @@ const T = {
     dest_title_kr: 'Korean', dest_sub_kr: 'Seoul · K-pop · K-drama', dest_cta_kr: 'Free Kit →',
     dest_title_jp: 'Japanese', dest_sub_jp: 'Tokyo · Anime · Culture', dest_cta_jp: 'Free Kit →',
     dest_title_fr: 'French', dest_sub_fr: 'Paris · Lifestyle · Cuisine', dest_cta_fr: 'Free Kit →',
+    piano_song_kr: '🇰🇷 Arirang (Korean)',
+    piano_song_jp: '🇯🇵 Sakura Sakura (Japanese)',
+    piano_song_fr: '🇫🇷 Frère Jacques (French)',
+    piano_lcd_note: 'CURRENT NOTE',
+    piano_lcd_next: 'NEXT',
+    piano_lcd_score: 'SCORE',
+    piano_status_free: 'FREE MODE — Pick a song or play freely',
+    piano_btn_lesson: '▶ Start Guided Lesson',
+    piano_btn_demo: '🎧 Listen to Auto Demo',
+    piano_btn_free: '🎹 Free Mode',
+    piano_cta_preply: '🎓 Want to master Korean, Japanese or French? Book a Trial Lesson with a Native Tutor on Preply →',
     tp_badge: 'AI Curated · Real Travel Experiences',
     tp_title: 'Plan Your Perfect Trip to Japan, South Korea or France',
     tp_step1: 'Destination', tp_step2: 'Duration', tp_step3: 'Interest',
@@ -473,6 +495,9 @@ function switchLanguage(lang) {
   renderQuiz();
   if (typeof window.regenerateTravelPlanner === 'function') {
     window.regenerateTravelPlanner();
+  }
+  if (typeof window.updatePianoLanguage === 'function') {
+    window.updatePianoLanguage(lang);
   }
 }
 

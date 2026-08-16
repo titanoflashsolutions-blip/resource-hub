@@ -376,38 +376,38 @@
 
       <!-- ── SELECTOR DE CANCIÓN POR IDIOMA ─────────────────── -->
       <div style="display:flex;justify-content:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
-        <button class="pc-btn piano-song-btn active" data-song="kr">🇰🇷 Arirang (Coreano)</button>
-        <button class="pc-btn piano-song-btn" data-song="jp">🇯🇵 Sakura Sakura (Japonés)</button>
-        <button class="pc-btn piano-song-btn" data-song="fr">🇫🇷 Frère Jacques (Francés)</button>
+        <button class="pc-btn piano-song-btn active" data-song="kr" data-i18n="piano_song_kr">🇰🇷 Arirang (Coreano)</button>
+        <button class="pc-btn piano-song-btn" data-song="jp" data-i18n="piano_song_jp">🇯🇵 Sakura Sakura (Japonés)</button>
+        <button class="pc-btn piano-song-btn" data-song="fr" data-i18n="piano_song_fr">🇫🇷 Frère Jacques (Francés)</button>
       </div>
 
       <!-- ── LCD DIGITAL ─────────────────────────────────────── -->
       <div class="piano-lcd">
         <div class="lcd-row lcd-top">
           <div class="lcd-block">
-            <span class="lcd-label">NOTA ACTUAL</span>
+            <span class="lcd-label" data-i18n="piano_lcd_note">NOTA ACTUAL</span>
             <span class="lcd-value" id="lcdCurrentNote">— · — · —</span>
           </div>
           <div class="lcd-block">
-            <span class="lcd-label">SIGUIENTE</span>
+            <span class="lcd-label" data-i18n="piano_lcd_next">SIGUIENTE</span>
             <span class="lcd-value lcd-next" id="lcdNextNote">—</span>
           </div>
           <div class="lcd-block">
-            <span class="lcd-label">PUNTAJE</span>
+            <span class="lcd-label" data-i18n="piano_lcd_score">PUNTAJE</span>
             <span class="lcd-value lcd-score" id="lcdScore">0</span>
           </div>
         </div>
         <div class="lcd-progress-track">
           <div class="lcd-progress-fill" id="lcdProgressFill"></div>
         </div>
-        <div class="lcd-status" id="lcdStatus">MODO LIBRE — Selecciona una canción o toca libremente</div>
+        <div class="lcd-status" id="lcdStatus" data-i18n="piano_status_free">MODO LIBRE — Selecciona una canción o toca libremente</div>
       </div>
 
       <!-- ── CONTROLES ───────────────────────────────────────── -->
       <div class="piano-controls">
-        <button class="pc-btn pc-btn--primary" id="btnStartLesson">▶ Iniciar Lección Guiada</button>
-        <button class="pc-btn" id="btnDemo">🎧 Escuchar Demo Automática</button>
-        <button class="pc-btn" id="btnFreeMode">🎹 Modo Libre</button>
+        <button class="pc-btn pc-btn--primary" id="btnStartLesson" data-i18n="piano_btn_lesson">▶ Iniciar Lección Guiada</button>
+        <button class="pc-btn" id="btnDemo" data-i18n="piano_btn_demo">🎧 Escuchar Demo Automática</button>
+        <button class="pc-btn" id="btnFreeMode" data-i18n="piano_btn_free">🎹 Modo Libre</button>
       </div>
 
       <!-- ── TECLADO ─────────────────────────────────────────── -->
@@ -419,7 +419,7 @@
 
       <!-- ── CTA DE CONVERSIÓN EXCLUSIVO PREPLY ──────────────── -->
       <div class="piano-cta-zone">
-        <a class="cta-gold" href="https://preply.sjv.io/c/7528742/1987575/24422" target="_blank" rel="noopener noreferrer">
+        <a class="cta-gold" href="https://preply.sjv.io/c/7528742/1987575/24422" target="_blank" rel="noopener noreferrer" data-i18n="piano_cta_preply">
           🎓 ¿Quieres dominar Coreano, Japonés o Francés? Reserva tu Clase de Prueba con un Tutor Nativo en Preply →
         </a>
       </div>

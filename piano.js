@@ -168,11 +168,42 @@
     if (lcdCurrent) lcdCurrent.textContent = noteDisplayString(note);
   }
 
+  /* ── MENSAJES BILINGÜES DINÁMICOS ────────────────────────── */
+  const PIANO_I18N = {
+    es: {
+      completed_next: '¡Completado! 🎉',
+      song_selected: 'Canción seleccionada: {song}',
+      lesson_status: '🎯 LECCIÓN: Toca {song}',
+      completed_status: '🎉 ¡Canción completada! Puntaje final: {score}',
+      demo_status: '🎧 Demo en vivo: {song}',
+      demo_finished: 'Demo finalizada. Elige un modo para continuar.',
+      free_status: 'MODO LIBRE — Selecciona una canción o toca libremente'
+    },
+    en: {
+      completed_next: 'Completed! 🎉',
+      song_selected: 'Selected song: {song}',
+      lesson_status: '🎯 LESSON: Play {song}',
+      completed_status: '🎉 Song completed! Final score: {score}',
+      demo_status: '🎧 Live Demo: {song}',
+      demo_finished: 'Demo finished. Choose a mode to continue.',
+      free_status: 'FREE MODE — Pick a song or play freely'
+    }
+  };
+
+  function getLang() {
+    return localStorage.getItem('hubLang') || 'es';
+  }
+
+  function pT(key) {
+    const l = getLang();
+    return (PIANO_I18N[l] && PIANO_I18N[l][key]) || PIANO_I18N.es[key] || '';
+  }
+
   function updateLcdLesson() {
     const song = SONGS[currentSongKey].notes;
     if (!lcdNext || !lcdProgress) return;
     if (songIndex >= song.length) {
-      lcdNext.textContent = '¡Completado! 🎉';
+      lcdNext.textContent = pT('completed_next');
       lcdProgress.style.width = '100%';
       return;
     }
@@ -213,7 +244,7 @@
         songIndex++;
         updateLcdLesson();
         if (songIndex >= song.length) {
-          if (lcdStatus) lcdStatus.textContent = `🎉 ¡Canción completada! Puntaje final: ${score}`;
+          if (lcdStatus) lcdStatus.textContent = pT('completed_status').replace('{score}', score);
           clearTargets();
           mode = 'free';
         } else {
@@ -251,7 +282,7 @@
     if (mode === 'lesson') {
       startLesson();
     } else {
-      if (lcdStatus) lcdStatus.textContent = `Canción seleccionada: ${SONGS[langKey].name}`;
+      if (lcdStatus) lcdStatus.textContent = pT('song_selected').replace('{song}', SONGS[langKey].name);
     }
   }
 
@@ -261,7 +292,7 @@
     songIndex = 0;
     score = 0;
     if (lcdScore) lcdScore.textContent = '0';
-    if (lcdStatus) lcdStatus.textContent = `🎯 LECCIÓN: Toca ${SONGS[currentSongKey].name}`;
+    if (lcdStatus) lcdStatus.textContent = pT('lesson_status').replace('{song}', SONGS[currentSongKey].name);
     updateLcdLesson();
     highlightTarget(SONGS[currentSongKey].notes[0]);
     setActiveButton(btnStart);
@@ -291,12 +322,12 @@
       mode = 'demo';
       clearTargets();
       const song = SONGS[currentSongKey].notes;
-      if (lcdStatus) lcdStatus.textContent = `🎧 Demo en vivo: ${SONGS[currentSongKey].name}`;
+      if (lcdStatus) lcdStatus.textContent = pT('demo_status').replace('{song}', SONGS[currentSongKey].name);
       setActiveButton(btnDemo);
       let i = 0;
       function step() {
         if (i >= song.length || mode !== 'demo') {
-          if (lcdStatus) lcdStatus.textContent = 'Demo finalizada. Elige un modo para continuar.';
+          if (lcdStatus) lcdStatus.textContent = pT('demo_finished');
           clearTargets();
           mode = 'free';
           return;
@@ -324,14 +355,21 @@
       stopDemo();
       mode = 'free';
       clearTargets();
-      if (lcdStatus) lcdStatus.textContent = 'MODO LIBRE — Toca cualquier tecla para comenzar';
+      if (lcdStatus) lcdStatus.textContent = pT('free_status');
       if (lcdNext) lcdNext.textContent = '—';
       setActiveButton(btnFree);
     });
   }
 
-  // Exponer selector globalmente
+  function updatePianoLanguage(lang) {
+    if (mode === 'free' && lcdStatus) {
+      lcdStatus.textContent = pT('free_status');
+    }
+  }
+
+  // Exponer selector y traductor globalmente
   window.setPianoSong = setSong;
+  window.updatePianoLanguage = updatePianoLanguage;
 
   // Conectar botones de canciones
   document.querySelectorAll('.piano-song-btn').forEach(btn => {
