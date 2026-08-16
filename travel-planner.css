@@ -1,0 +1,576 @@
+/* travel-planner.css */
+
+:root {
+  --tp-bg: #0d0d0f;
+  --tp-bg-2: #121216;
+  --tp-surface: rgba(18, 18, 22, 0.96);
+  --tp-surface-2: rgba(26, 26, 31, 0.96);
+  --tp-surface-3: rgba(16, 16, 20, 0.96);
+  --tp-line: rgba(196, 164, 92, 0.28);
+  --tp-gold: #d7b15e;
+  --tp-gold-2: #f1d079;
+  --tp-gold-3: #8f6c28;
+  --tp-text: #f5f3ee;
+  --tp-text-soft: #c7c1b7;
+  --tp-muted: #9a9389;
+  --tp-success: #9ae0b0;
+  --tp-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  --tp-radius: 22px;
+  --tp-radius-sm: 14px;
+}
+
+.travel-planner-container * {
+  box-sizing: border-box;
+}
+
+.travel-planner-container {
+  --container-max: 1220px;
+  width: 100%;
+  margin: 32px auto;
+  color: var(--tp-text);
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(215, 177, 94, 0.08), transparent 25%),
+    linear-gradient(180deg, var(--tp-bg) 0%, #0b0c10 100%);
+}
+
+.travel-planner-container .planner-shell {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 32px 22px 28px;
+  border: 1px solid var(--tp-line);
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(18, 18, 22, 0.98), rgba(12, 12, 15, 0.98));
+  box-shadow: var(--tp-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.travel-planner-container .planner-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(215, 177, 94, 0.18), transparent 70%);
+  pointer-events: none;
+}
+
+.travel-planner-container .planner-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.travel-planner-container .planner-header-copy h2 {
+  margin: 6px 0 0;
+  font-size: clamp(1.8rem, 2vw, 2.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+}
+
+.travel-planner-container .eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--tp-gold-2);
+  font-weight: 700;
+  opacity: 0.95;
+}
+
+.travel-planner-container .planner-badge {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(215, 177, 94, 0.1);
+  border: 1px solid rgba(215, 177, 94, 0.25);
+  color: var(--tp-gold-2);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.travel-planner-container .planner-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 28px;
+  position: relative;
+  z-index: 1;
+}
+
+.travel-planner-container .planner-form {
+  padding: 22px;
+  border-radius: var(--tp-radius);
+  background: linear-gradient(180deg, rgba(23, 24, 28, 1), rgba(15, 15, 19, 1));
+  border: 1px solid var(--tp-line);
+}
+
+.travel-planner-container .form-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.travel-planner-container .step {
+  padding: 12px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(215, 177, 94, 0.18);
+  background: rgba(255, 255, 255, 0.02);
+  text-align: center;
+}
+
+.travel-planner-container .step.active {
+  border-color: rgba(241, 208, 121, 0.45);
+  background: rgba(215, 177, 94, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(241, 208, 121, 0.12);
+}
+
+.travel-planner-container .step span {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--tp-gold-2);
+}
+
+.travel-planner-container .step small {
+  display: block;
+  margin-top: 4px;
+  color: var(--tp-text-soft);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.travel-planner-container .field-group {
+  margin-bottom: 18px;
+}
+
+.travel-planner-container label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--tp-gold-2);
+}
+
+.travel-planner-container .select-wrap {
+  position: relative;
+}
+
+.travel-planner-container .select-wrap::after {
+  content: "▾";
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--tp-gold-2);
+  font-size: 1.1rem;
+  pointer-events: none;
+}
+
+.travel-planner-container select {
+  width: 100%;
+  appearance: none;
+  border: 1px solid rgba(215, 177, 94, 0.25);
+  background: rgba(10, 10, 14, 0.9);
+  color: var(--tp-text);
+  border-radius: 12px;
+  padding: 15px 42px 15px 16px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.travel-planner-container select:focus {
+  border-color: rgba(241, 208, 121, 0.75);
+  box-shadow: 0 0 0 4px rgba(215, 177, 94, 0.12);
+}
+
+.travel-planner-container .primary-btn {
+  width: 100%;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--tp-gold-2), var(--tp-gold));
+  color: #191611;
+  font-weight: 900;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  padding: 16px 18px;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  box-shadow: 0 12px 32px rgba(215, 177, 94, 0.24);
+}
+
+.travel-planner-container .primary-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 38px rgba(215, 177, 94, 0.3);
+}
+
+.travel-planner-container .planner-side-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.travel-planner-container .mini-card {
+  background: linear-gradient(180deg, rgba(24, 24, 28, 1), rgba(16, 16, 20, 1));
+  border: 1px solid var(--tp-line);
+  border-radius: 18px;
+  padding: 20px 18px;
+}
+
+.travel-planner-container .tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--tp-gold-2);
+  font-weight: 800;
+}
+
+.travel-planner-container .mini-card h3 {
+  margin: 12px 0 8px;
+  font-size: 1.12rem;
+  line-height: 1.4;
+  color: var(--tp-text);
+}
+
+.travel-planner-container .mini-card ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--tp-text-soft);
+  line-height: 1.7;
+}
+
+.travel-planner-container .cta-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.travel-planner-container .gold-link,
+.travel-planner-container .secondary-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 12px;
+  padding: 16px 18px;
+  text-decoration: none;
+  color: var(--tp-text);
+  line-height: 1.5;
+  font-weight: 600;
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+
+.travel-planner-container .gold-link {
+  border: 1px solid rgba(215, 177, 94, 0.35);
+  background: rgba(215, 177, 94, 0.08);
+  color: var(--tp-gold-2);
+}
+
+.travel-planner-container .secondary-link {
+  border: 1px solid rgba(242, 242, 242, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--tp-text-soft);
+}
+
+.travel-planner-container .gold-link:hover,
+.travel-planner-container .secondary-link:hover {
+  transform: translateY(-1px);
+}
+
+.travel-planner-container .planner-result {
+  margin-top: 28px;
+  position: relative;
+  z-index: 1;
+}
+
+.travel-planner-container .planner-result.hidden {
+  display: none;
+}
+
+.travel-planner-container .itinerary-shell {
+  background: linear-gradient(180deg, rgba(15, 17, 20, 1), rgba(11, 12, 14, 1));
+  border: 1px solid var(--tp-line);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.travel-planner-container .itinerary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 24px 18px;
+  border-bottom: 1px solid var(--tp-line);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.travel-planner-container .itinerary-header h3 {
+  margin: 0;
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  line-height: 1.2;
+}
+
+.travel-planner-container .itinerary-meta {
+  color: var(--tp-text-soft);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.travel-planner-container .itinerary-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.travel-planner-container .print-btn {
+  border: 1px solid rgba(215, 177, 94, 0.35);
+  background: rgba(215, 177, 94, 0.08);
+  color: var(--tp-gold-2);
+  border-radius: 12px;
+  padding: 11px 14px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.travel-planner-container .itinerary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  padding: 24px;
+}
+
+.travel-planner-container .day-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(215, 177, 94, 0.16);
+  border-radius: 18px;
+  padding: 20px;
+  min-height: 290px;
+}
+
+.travel-planner-container .day-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.travel-planner-container .day-card-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--tp-gold-2);
+}
+
+.travel-planner-container .day-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(215, 177, 94, 0.12);
+  border: 1px solid rgba(215, 177, 94, 0.28);
+  color: var(--tp-gold-2);
+  font-weight: 800;
+}
+
+.travel-planner-container .time-block {
+  margin-bottom: 12px;
+}
+
+.travel-planner-container .time-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--tp-gold-2);
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.travel-planner-container .time-content {
+  color: var(--tp-text);
+  font-size: 0.98rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.travel-planner-container .phrase-box {
+  margin-top: 18px;
+  padding: 14px;
+  border-left: 3px solid var(--tp-gold);
+  background: rgba(215, 177, 94, 0.06);
+  border-radius: 10px;
+}
+
+.travel-planner-container .phrase-box .phrase-title {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--tp-gold-2);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+}
+
+.travel-planner-container .phrase-box strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 1.12rem;
+  color: var(--tp-text);
+}
+
+.travel-planner-container .phrase-box small {
+  color: var(--tp-text-soft);
+  line-height: 1.5;
+}
+
+.travel-planner-container .tour-card {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(215, 177, 94, 0.18);
+}
+
+.travel-planner-container .tour-card strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--tp-gold-2);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.travel-planner-container .tour-card a {
+  color: var(--tp-text);
+  text-decoration: none;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+.travel-planner-container .tour-card a:hover {
+  text-decoration: underline;
+}
+
+.travel-planner-container .planner-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0 24px 24px;
+  margin-top: 4px;
+}
+
+.travel-planner-container .planner-footer-links a {
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--tp-gold-2);
+}
+
+@media (max-width: 900px) {
+  .travel-planner-container .planner-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .travel-planner-container .planner-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .travel-planner-container .itinerary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .travel-planner-container .planner-shell {
+    padding: 20px 14px 18px;
+  }
+
+  .travel-planner-container .planner-form,
+  .travel-planner-container .mini-card,
+  .travel-planner-container .day-card {
+    padding: 16px 14px;
+  }
+
+  .travel-planner-container .itinerary-header {
+    padding: 18px 16px 14px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .travel-planner-container .itinerary-grid {
+    padding: 16px;
+  }
+
+  .travel-planner-container .planner-footer-links {
+    padding: 0 16px 20px;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .travel-planner-container {
+    background: transparent;
+  }
+
+  .travel-planner-container .planner-shell {
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    background: #fff;
+    color: #111;
+  }
+
+  .travel-planner-container .planner-form,
+  .travel-planner-container .planner-side-panel,
+  .travel-planner-container .planner-badge,
+  .travel-planner-container .planner-footer-links,
+  .travel-planner-container .print-btn {
+    display: none !important;
+  }
+
+  .travel-planner-container .itinerary-shell {
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #111;
+  }
+
+  .travel-planner-container .day-card,
+  .travel-planner-container .mini-card,
+  .travel-planner-container .planner-result {
+    box-shadow: none !important;
+    background: #fff !important;
+    color: #111 !important;
+    border-color: #ddd !important;
+  }
+
+  .travel-planner-container .time-content,
+  .travel-planner-container .phrase-box small,
+  .travel-planner-container .tour-card a,
+  .travel-planner-container .itinerary-meta {
+    color: #111 !important;
+  }
+
+  .travel-planner-container .day-card-header h4,
+  .travel-planner-container .phase-title,
+  .travel-planner-container .time-label,
+  .travel-planner-container .phrase-box .phrase-title {
+    color: #111 !important;
+  }
+}

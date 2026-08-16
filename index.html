@@ -9,6 +9,7 @@
   <meta property="og:description" content="20 recursos premium para aprender idiomas. Kits PDF gratis, tutores Preply y audio nativo." />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="piano.css" />
+  <link rel="stylesheet" href="travel-planner.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -462,6 +463,112 @@
         </div>
       </div>
 
+      <!-- ── AI TRAVEL PLANNER ──────────────────────── -->
+      <div class="tool-card" id="tp-tool" style="grid-column: 1 / -1;">
+        <div class="travel-planner-container" id="travelPlannerRoot" style="margin:0;padding:0;background:transparent;border:none;box-shadow:none;">
+          <section class="planner-shell" style="border:none;background:transparent;box-shadow:none;padding:0;">
+            <header class="planner-header">
+              <div class="planner-header-copy">
+                <span class="eyebrow">✈️ AI Travel Planner 2026</span>
+                <h2>Diseña tu viaje perfecto en Japón, Corea del Sur o Francia</h2>
+              </div>
+              <div class="planner-badge">Curado con IA · Experiencias reales</div>
+            </header>
+
+            <div class="planner-layout">
+              <form id="travelPlannerForm" class="planner-form">
+                <div class="form-steps">
+                  <div class="step active">
+                    <span>01</span>
+                    <small>Destino</small>
+                  </div>
+                  <div class="step">
+                    <span>02</span>
+                    <small>Duración</small>
+                  </div>
+                  <div class="step">
+                    <span>03</span>
+                    <small>Interés</small>
+                  </div>
+                </div>
+
+                <div class="field-group">
+                  <label for="destinationSelect">Destino</label>
+                  <div class="select-wrap">
+                    <select id="destinationSelect" name="destination">
+                      <option value="japan">🇯🇵 Japón</option>
+                      <option value="korea">🇰🇷 Corea del Sur</option>
+                      <option value="france">🇫🇷 Francia</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="field-group">
+                  <label for="durationSelect">Duración</label>
+                  <div class="select-wrap">
+                    <select id="durationSelect" name="duration">
+                      <option value="3">3 Días (Express)</option>
+                      <option value="5" selected>5 Días (Esencial)</option>
+                      <option value="7">7 Días (Inmersión Total)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="field-group">
+                  <label for="interestSelect">Interés Principal</label>
+                  <div class="select-wrap">
+                    <select id="interestSelect" name="interest">
+                      <option value="culture">🏯 Cultura & Templos</option>
+                      <option value="food">🍜 Gastronomía & Street Food</option>
+                      <option value="shopping">🛍️ Compras & Moda / K-Pop & Anime</option>
+                      <option value="nature">🌲 Naturaleza & Paisajes</option>
+                    </select>
+                  </div>
+                </div>
+
+                <button type="submit" class="primary-btn">
+                  ⚡ Generar Mi Itinerario Personalizado
+                </button>
+              </form>
+
+              <aside class="planner-side-panel">
+                <div class="mini-card feature">
+                  <span class="tag">Top picks</span>
+                  <h3>Experiencias que encajan con tu estilo</h3>
+                  <ul>
+                    <li>Tour guiado, gastronomía local y skyline nocturno</li>
+                    <li>Rutas inteligentes por ciudad y paisajes emblemáticos</li>
+                    <li>Frases útiles para comunicarte con confianza</li>
+                  </ul>
+                </div>
+
+                <div class="mini-card cta-stack">
+                  <a
+                    href="https://preply.sjv.io/c/7528742/1987575/24422"
+                    class="gold-link"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    🎓 ¿Viajas pronto? Domina las frases básicas con un tutor nativo en Preply antes de tu vuelo →
+                  </a>
+
+                  <a
+                    href="https://resource-hub-seven-mu.vercel.app/#recursos"
+                    class="secondary-link"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    📥 Descarga tu Guía de Supervivencia para Viajeros en PDF Gratis →
+                  </a>
+                </div>
+              </aside>
+            </div>
+
+            <div id="plannerResult" class="planner-result hidden" aria-live="polite"></div>
+          </section>
+        </div>
+      </div>
+
     </div><!-- /tools-grid -->
 
     <!-- AdSense bloque dentro de la sección -->
@@ -505,5 +612,6 @@
 
 <script src="app.js"></script>
 <script src="piano.js"></script>
+<script src="travel-planner.js"></script>
 </body>
 </html>
