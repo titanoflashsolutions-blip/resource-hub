@@ -199,6 +199,7 @@ const RESOURCES = [
   {
     id: 1, hero: true, icon: '🎓',
     iconBg: 'linear-gradient(135deg,#F59E0B,#D97706)',
+    img: 'assets/img/thumb-preply-main.jpg',
     category: 'tutors', langCodes: ['kr','jp','fr'],
     name:    { es: 'Preply — Tutores Nativos 1-a-1',     en: 'Preply — Native Tutors 1-on-1' },
     tagline: { es: 'Aprende 3x más rápido con un tutor certificado. Primera lección a precio especial. El método más efectivo del mercado.',

@@ -2099,6 +2099,39 @@ footer a:hover { text-decoration: underline; }
   filter: brightness(0.95) saturate(1.05) !important;
 }
 
+/* ── Compact Card Thumbnail Photo Strip ──────────────────── */
+.card-thumb-wrap {
+  position: relative;
+  width: calc(100% + 48px);
+  margin: -24px -24px 14px -24px;
+  height: 125px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.resource-card.hero-card .card-thumb-wrap {
+  height: 155px;
+}
+
+.card-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.resource-card:hover .card-thumb-img {
+  transform: scale(1.05);
+}
+
+.card-thumb-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15,23,42,0.02) 0%, rgba(15,23,42,0.65) 100%);
+  pointer-events: none;
+}
+
 /* ── Responsive Adjustments ──────────────────────────────── */
 @media (max-width: 900px) {
   .preply-banner { grid-template-columns: 1fr; }
