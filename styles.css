@@ -57,26 +57,30 @@ body {
   min-height: 100vh;
 }
 
-/* ── Animated Travel Aurora Background ─────────────────────────── */
+/* ── Atmospheric Travel Skyline & Aurora Background ──────────── */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background:
-    radial-gradient(ellipse 90% 70% at 15% 10%, rgba(139,92,246,0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 70% 60% at 85% 20%, rgba(245,158,11,0.14) 0%, transparent 55%),
-    radial-gradient(ellipse 80% 60% at 50% 85%, rgba(16,185,129,0.13) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 90% 90%, rgba(14,165,233,0.12) 0%, transparent 50%);
-  background-size: 200% 200%;
-  animation: auroraFlow 18s ease-in-out infinite alternate;
+  background-image:
+    linear-gradient(180deg, rgba(15, 23, 42, 0.82) 0%, rgba(15, 23, 42, 0.70) 35%, rgba(15, 23, 42, 0.90) 70%, rgba(15, 23, 42, 0.97) 100%),
+    radial-gradient(ellipse 90% 70% at 15% 15%, rgba(139,92,246,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 60% at 85% 25%, rgba(245,158,11,0.16) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 60% at 50% 85%, rgba(16,185,129,0.14) 0%, transparent 60%),
+    url('assets/img/travel-night-skyline-bg.jpg');
+  background-size: cover, 200% 200%, 200% 200%, 200% 200%, cover;
+  background-position: center, 0% 0%, 100% 100%, 50% 50%, center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  animation: skylineAuroraFlow 24s ease-in-out infinite alternate;
   pointer-events: none;
   z-index: 0;
 }
 
-@keyframes auroraFlow {
-  0%   { background-position: 0% 0%; }
-  50%  { background-position: 100% 100%; }
-  100% { background-position: 50% 0%; }
+@keyframes skylineAuroraFlow {
+  0%   { background-position: center, 0% 0%, 100% 100%, 50% 50%, center top; }
+  50%  { background-position: center, 100% 100%, 0% 0%, 80% 80%, center 40%; }
+  100% { background-position: center, 50% 0%, 50% 100%, 20% 20%, center top; }
 }
 
 /* ── Scrollbar ─────────────────────────────────────────────────── */
