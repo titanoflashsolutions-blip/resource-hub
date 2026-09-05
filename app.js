@@ -23,8 +23,10 @@ const LINKS = {
    ═══════════════════════════════════════════════════ */
 const T = {
   es: {
+    urgency_text: '🔥 <strong>Oferta Flash:</strong> Reserva tu clase de prueba en Preply con descuento especial.',
+    urgency_expires: 'Expira en:',
     nav_resources: 'Recursos', nav_audio: 'Audio Nativo',
-    nav_quiz: 'Quiz', nav_cta: '🎓 Tutor Gratis',
+    nav_quiz: 'Quiz', nav_piano: '🎹 Piano', nav_planner: '✈️ Travel Planner', nav_cta: '🎓 Tutor Gratis',
     hero_badge: '9 Recursos Seleccionados · Audio Nativo · Quiz IA',
     hero_h1: 'El Hub Definitivo para<br><span class="grad-gold">Coreano</span>, <span class="grad-em">Japonés</span><br>y Francés',
     hero_sub: 'Kits PDF gratis + tutores nativos 1-a-1. Todo curado. Cero relleno. 100% gratuito para empezar.',
@@ -44,6 +46,10 @@ const T = {
     preply_comm_label: 'Clase de Prueba',
     preply_comm_note: 'Empieza hoy sin compromiso',
     preply_comm_badge: '🔥 OFERTA LIMITADA',
+    dest_heading_main: 'Destinos', dest_heading_span: 'Destacados',
+    dest_title_kr: 'Coreano', dest_sub_kr: 'Seúl · K-pop · K-drama', dest_cta_kr: 'Kit Gratis →',
+    dest_title_jp: 'Japonés', dest_sub_jp: 'Tokio · Anime · Cultura', dest_cta_jp: 'Kit Gratis →',
+    dest_title_fr: 'Francés', dest_sub_fr: 'París · Lifestyle · Gastronomía', dest_cta_fr: 'Kit Gratis →',
     section_all: 'Todos los', section_span: 'Recursos',
     audio_title: '🔊 Audio Companion —',
     audio_title_span: 'Pronunciación Nativa',
@@ -52,7 +58,7 @@ const T = {
     audio_preply_cta: '🎓 Practica con un Tutor Nativo en Preply →',
     quiz_h2_main: '🧠 Language', quiz_h2_span: 'Matchmaker 2.0',
     quiz_sub: 'Responde 10 preguntas rápidas y nuestra IA calculará el recurso perfecto para ti.',
-    quiz_q_of: 'de', quiz_next: 'Siguiente →',
+    quiz_q_of: 'de', quiz_next: 'Siguiente →', quiz_prev: '← Anterior',
     quiz_finish: 'Ver Mi Resultado 🎯', quiz_restart: '↩ Repetir Quiz',
     result_prefix: 'Tu idioma ideal: ',
     result_desc_tutor: 'Para tu perfil, las clases 1-a-1 personalizadas con un tutor nativo en Preply son tu mejor camino. Aprenderás hasta 3 veces más rápido.',
@@ -70,6 +76,7 @@ const T = {
     pfp_upload: 'Haz clic o arrastra tu imagen aquí',
     pfp_hint: 'JPG, PNG, WEBP · Máx. 10 MB',
     pfp_download: '⬇️ Descargar PFP',
+    pfp_reset: '🔄 Cambiar foto / Subir otra',
     pfp_cta_text: '¿Quieres mejorar tu pronunciación con tu nuevo avatar?',
     pfp_cta_btn: '🎓 Prueba Preply Gratis →',
     filter_none: '🌟 Original', filter_anime: '🎌 Anime',
@@ -83,9 +90,8 @@ const T = {
     wc_cta_btn: '🎓 Clases con Tutor Nativo →',
     trust_text: 'estudiantes satisfechos · <strong>4.9/5</strong> promedio',
     hero_live_badge: '🎓 Sesión en vivo ahora',
-    dest_title_kr: 'Coreano', dest_sub_kr: 'Seúl · K-pop · K-drama', dest_cta_kr: 'Kit Gratis →',
-    dest_title_jp: 'Japonés', dest_sub_jp: 'Tokio · Anime · Cultura', dest_cta_jp: 'Kit Gratis →',
-    dest_title_fr: 'Francés', dest_sub_fr: 'París · Lifestyle · Gastronomía', dest_cta_fr: 'Kit Gratis →',
+    piano_h2_main: '🎹 Piano Interactivo', piano_h2_span: 'Multilingüe',
+    piano_h2_sub: 'Toca y aprende canciones tradicionales en Coreano, Japonés y Francés',
     piano_song_kr: '🇰🇷 Arirang (Coreano)',
     piano_song_jp: '🇯🇵 Sakura Sakura (Japonés)',
     piano_song_fr: '🇫🇷 Frère Jacques (Francés)',
@@ -114,8 +120,10 @@ const T = {
     tp_int_shopping: '🛍️ Compras & Moda / K-Pop & Anime', tp_int_nature: '🌲 Naturaleza & Paisajes',
   },
   en: {
+    urgency_text: '🔥 <strong>Flash Deal:</strong> Book your trial lesson on Preply with an exclusive discount.',
+    urgency_expires: 'Expires in:',
     nav_resources: 'Resources', nav_audio: 'Native Audio',
-    nav_quiz: 'Quiz', nav_cta: '🎓 Free Tutor',
+    nav_quiz: 'Quiz', nav_piano: '🎹 Piano', nav_planner: '✈️ Travel Planner', nav_cta: '🎓 Free Tutor',
     hero_badge: '9 Selected Resources · Native Audio · AI Quiz',
     hero_h1: 'The Ultimate Hub to Learn<br><span class="grad-gold">Korean</span>, <span class="grad-em">Japanese</span><br>and French',
     hero_sub: 'Free PDF kits + native 1-on-1 tutors. All curated. Zero fluff. 100% free to get started.',
@@ -135,6 +143,10 @@ const T = {
     preply_comm_label: 'Trial Class',
     preply_comm_note: 'Start today, no commitment',
     preply_comm_badge: '🔥 LIMITED OFFER',
+    dest_heading_main: 'Featured', dest_heading_span: 'Destinations',
+    dest_title_kr: 'Korean', dest_sub_kr: 'Seoul · K-pop · K-drama', dest_cta_kr: 'Free Kit →',
+    dest_title_jp: 'Japanese', dest_sub_jp: 'Tokyo · Anime · Culture', dest_cta_jp: 'Free Kit →',
+    dest_title_fr: 'French', dest_sub_fr: 'Paris · Lifestyle · Cuisine', dest_cta_fr: 'Free Kit →',
     section_all: 'All', section_span: 'Resources',
     audio_title: '🔊 Audio Companion —',
     audio_title_span: 'Native Pronunciation',
@@ -143,7 +155,7 @@ const T = {
     audio_preply_cta: '🎓 Practice with a Native Tutor on Preply →',
     quiz_h2_main: '🧠 Language', quiz_h2_span: 'Matchmaker 2.0',
     quiz_sub: 'Answer 10 quick questions and our AI will calculate the perfect resource for you.',
-    quiz_q_of: 'of', quiz_next: 'Next →',
+    quiz_q_of: 'of', quiz_next: 'Next →', quiz_prev: '← Previous',
     quiz_finish: 'See My Result 🎯', quiz_restart: '↩ Retake Quiz',
     result_prefix: 'Your ideal language: ',
     result_desc_tutor: 'With your profile, personalized 1-on-1 classes with a native tutor on Preply are your best path. You\'ll learn up to 3x faster.',
@@ -155,12 +167,13 @@ const T = {
     footer_note: '· Some links are affiliate links (no extra cost to you)',
     nav_tools: '🛠️ Tools',
     tools_title_1: '🛠️ Free', tools_title_2: 'Tools',
-    tools_subtitle: '3 interactive apps · No sign-up needed',
+    tools_subtitle: '2 interactive apps · No sign-up needed',
     pfp_title: 'Aesthetic PFP Generator',
     pfp_desc: 'Turn your photo into an avatar with anime, neon, vintage filters & more. 100% in your browser — no data uploaded.',
     pfp_upload: 'Click or drag your image here',
     pfp_hint: 'JPG, PNG, WEBP · Max 10 MB',
     pfp_download: '⬇️ Download PFP',
+    pfp_reset: '🔄 Change photo / Re-upload',
     pfp_cta_text: 'Want to improve your pronunciation with your new look?',
     pfp_cta_btn: '🎓 Try Preply for Free →',
     filter_none: '🌟 Original', filter_anime: '🎌 Anime',
@@ -174,6 +187,8 @@ const T = {
     wc_cta_btn: '🎓 Classes with Native Tutor →',
     trust_text: 'happy students · <strong>4.9/5</strong> rating',
     hero_live_badge: '🎓 Live 1-on-1 Session Now',
+    piano_h2_main: '🎹 Interactive', piano_h2_span: 'Multilingual Piano',
+    piano_h2_sub: 'Play and learn traditional melodies in Korean, Japanese and French',
     dest_title_kr: 'Korean', dest_sub_kr: 'Seoul · K-pop · K-drama', dest_cta_kr: 'Free Kit →',
     dest_title_jp: 'Japanese', dest_sub_jp: 'Tokyo · Anime · Culture', dest_cta_jp: 'Free Kit →',
     dest_title_fr: 'French', dest_sub_fr: 'Paris · Lifestyle · Cuisine', dest_cta_fr: 'Free Kit →',
@@ -458,11 +473,13 @@ const QUIZ_DATA = {
 /* ═══════════════════════════════════════════════════
    STATE
    ═══════════════════════════════════════════════════ */
+const urlParams = new URLSearchParams(window.location.search);
+const initialLang = urlParams.get('lang') || localStorage.getItem('hubLang') || 'es';
 const state = {
   search: '',
   filter: 'all',
   currentAudioLang: 'japones',
-  lang: localStorage.getItem('hubLang') || 'es',
+  lang: (initialLang === 'en' || initialLang === 'es') ? initialLang : 'es',
   quiz: { current: 0, answers: {}, done: false },
 };
 
@@ -478,12 +495,16 @@ document.addEventListener('DOMContentLoaded', () => {
   setupFilters();
   setupAudioTabs();
   setupKeyboard();
+  setupMobileNav();
+  initCountdown();
   animateStats();
   updateLangButtons();
+  // Ensure initial links and meta match selected language
+  switchLanguage(state.lang);
 });
 
 /* ═══════════════════════════════════════════════════
-   i18n
+   i18n & STATE SYNCHRONIZATION
    ═══════════════════════════════════════════════════ */
 function switchLanguage(lang) {
   state.lang = lang;
@@ -492,6 +513,33 @@ function switchLanguage(lang) {
   document.title = lang === 'es'
     ? 'Language Resource Hub 2.0 — Aprende Coreano, Japonés y Francés | Recursos Gratis & Tutores'
     : 'Language Resource Hub 2.0 — Learn Korean, Japanese & French | Free Kits & Tutors';
+
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) {
+    metaDesc.content = lang === 'es'
+      ? 'Aprende Coreano, Japonés y Francés 3x más rápido. Kits PDF gratis descargables, tutores nativos 1-a-1 en Preply con 50% DTO, audio con pronunciación nativa, quiz interactivo, piano musical y planificador de viajes con IA.'
+      : 'Learn Korean, Japanese and French 3x faster. Free downloadable PDF kits, 1-on-1 certified Preply tutors with 50% OFF, native audio pronunciation, AI quiz, interactive piano and travel planner.';
+  }
+
+  // Dynamically update destination card and footer Gumroad URLs
+  const krLink = lang === 'es' ? LINKS.kitKrEs : LINKS.kitKrEn;
+  const jpLink = lang === 'es' ? LINKS.kitJpEs : LINKS.kitJpEn;
+  const frLink = lang === 'es' ? LINKS.kitFrEs : LINKS.kitFrEn;
+
+  const cardKr = document.getElementById('dest-card-kr');
+  if (cardKr) cardKr.href = krLink;
+  const cardJp = document.getElementById('dest-card-jp');
+  if (cardJp) cardJp.href = jpLink;
+  const cardFr = document.getElementById('dest-card-fr');
+  if (cardFr) cardFr.href = frLink;
+
+  const footKr = document.getElementById('footer-link-kr');
+  if (footKr) footKr.href = krLink;
+  const footJp = document.getElementById('footer-link-jp');
+  if (footJp) footJp.href = jpLink;
+  const footFr = document.getElementById('footer-link-fr');
+  if (footFr) footFr.href = frLink;
+
   updateLangButtons();
   applyTranslations();
   renderCards();
@@ -542,6 +590,12 @@ function applyTranslations() {
     nextBtn.textContent = state.quiz.current === QUIZ_DATA[lang].length - 1
       ? t('quiz_finish') : t('quiz_next');
   }
+
+  const prevBtn = document.getElementById('btn-prev');
+  if (prevBtn) prevBtn.textContent = t('quiz_prev');
+
+  const pfpReset = document.getElementById('pfp-reset-btn');
+  if (pfpReset) pfpReset.textContent = t('pfp_reset');
 }
 
 /* ═══════════════════════════════════════════════════
@@ -598,7 +652,7 @@ function renderCards() {
         </div>
       </div>
       <div>
-        <div class="card-name">${r.name[lang]}</div>
+        <h3 class="card-name">${r.name[lang]}</h3>
         <div class="card-tagline">${r.tagline[lang]}</div>
       </div>
       ${r.audio ? `
@@ -639,29 +693,53 @@ function setupFilters() {
 }
 
 /* ═══════════════════════════════════════════════════
-   AUDIO ENGINE — Web Speech API (zero cost)
+   AUDIO ENGINE — Web Speech API (zero cost & GC protected)
    ═══════════════════════════════════════════════════ */
+let _activeUtterance = null;
+
+function clearPlayingAudioButtons() {
+  document.querySelectorAll('.phrase-card .play-btn.playing, .audio-btn.playing').forEach(btn => {
+    btn.classList.remove('playing');
+  });
+}
+
 function speakPhrase(text, lang, btnId) {
   if (!window.speechSynthesis) return;
   window.speechSynthesis.cancel();
+  clearPlayingAudioButtons();
   const btn = document.getElementById(btnId);
   if (btn) btn.classList.add('playing');
   const utter = new SpeechSynthesisUtterance(text);
+  _activeUtterance = utter;
   utter.lang = lang; utter.rate = 0.85; utter.pitch = 1; utter.volume = 1;
-  utter.onend  = () => { if (btn) btn.classList.remove('playing'); };
-  utter.onerror = () => { if (btn) btn.classList.remove('playing'); };
+  utter.onend  = () => {
+    if (btn) btn.classList.remove('playing');
+    _activeUtterance = null;
+  };
+  utter.onerror = () => {
+    if (btn) btn.classList.remove('playing');
+    _activeUtterance = null;
+  };
   window.speechSynthesis.speak(utter);
 }
 
 function speakSlow(text, lang, btnId) {
   if (!window.speechSynthesis) return;
   window.speechSynthesis.cancel();
+  clearPlayingAudioButtons();
   const btn = document.getElementById(btnId);
   if (btn) btn.classList.add('playing');
   const utter = new SpeechSynthesisUtterance(text);
+  _activeUtterance = utter;
   utter.lang = lang; utter.rate = 0.5; utter.pitch = 1; utter.volume = 1;
-  utter.onend  = () => { if (btn) btn.classList.remove('playing'); };
-  utter.onerror = () => { if (btn) btn.classList.remove('playing'); };
+  utter.onend  = () => {
+    if (btn) btn.classList.remove('playing');
+    _activeUtterance = null;
+  };
+  utter.onerror = () => {
+    if (btn) btn.classList.remove('playing');
+    _activeUtterance = null;
+  };
   window.speechSynthesis.speak(utter);
 }
 
@@ -764,6 +842,12 @@ function renderQuestion() {
     nextBtn.textContent = state.quiz.current === QUIZ_DATA[lang].length - 1
       ? t('quiz_finish') : t('quiz_next');
   }
+
+  const prevBtn = document.getElementById('btn-prev');
+  if (prevBtn) {
+    prevBtn.style.display = state.quiz.current > 0 ? 'inline-flex' : 'none';
+    prevBtn.textContent = t('quiz_prev');
+  }
 }
 
 function selectOption(idx) {
@@ -771,6 +855,14 @@ function selectOption(idx) {
   document.querySelectorAll('.quiz-option').forEach((btn, i) => {
     btn.classList.toggle('selected', i === idx);
   });
+}
+
+function prevQuestion() {
+  if (state.quiz.current > 0) {
+    state.quiz.current--;
+    updateQuizProgress();
+    renderQuestion();
+  }
 }
 
 function nextQuestion() {
@@ -832,6 +924,7 @@ function restartQuiz() {
 window.switchLanguage = switchLanguage;
 window.selectOption   = selectOption;
 window.nextQuestion   = nextQuestion;
+window.prevQuestion   = prevQuestion;
 window.restartQuiz    = restartQuiz;
 window.speakPhrase    = speakPhrase;
 window.speakSlow      = speakSlow;
@@ -859,7 +952,7 @@ function setupKeyboard() {
 function animateStats() {
   const stats = [
     { id: 'stat-students',  target: 1420,  format: v => v.toLocaleString() + '+' },
-    { id: 'stat-resources', target: 7,     format: v => v.toString() },
+    { id: 'stat-resources', target: 9,     format: v => v.toString() },
     { id: 'stat-languages', target: 3,     format: v => v.toString() },
     { id: 'stat-tutors',    target: 32000, format: v => Math.floor(v/1000) + 'K+' },
   ];
@@ -1040,6 +1133,19 @@ function initPFPGenerator() {
       link.click();
     });
   }
+
+  // Reset / Re-upload
+  const resetBtn = document.getElementById('pfp-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      fileInput.value = '';
+      previewWrap.style.display = 'none';
+      dropZone.style.display = 'block';
+      originalImageData = null;
+      activeFilter = 'none';
+      filterBtns.forEach(b => b.classList.toggle('active', b.dataset.filter === 'none'));
+    });
+  }
 }
 
 /* ═══════════════════════════════════════════════════
@@ -1130,4 +1236,80 @@ if (typeof debounce === 'undefined') {
   function debounce(fn, ms) {
     let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); };
   }
+}
+
+/* ═══════════════════════════════════════════════════
+   DYNAMIC URGENCY COUNTDOWN
+   ═══════════════════════════════════════════════════ */
+function initCountdown() {
+  const timerEl = document.getElementById('countdown-timer');
+  if (!timerEl) return;
+
+  const STORAGE_KEY = 'hub_urgency_seconds';
+  const DEFAULT_SECONDS = 7200; // 2 hours
+
+  let remaining = parseInt(localStorage.getItem(STORAGE_KEY), 10);
+  if (isNaN(remaining) || remaining <= 0) {
+    remaining = DEFAULT_SECONDS;
+  }
+
+  function updateDisplay() {
+    const hrs = Math.floor(remaining / 3600);
+    const mins = Math.floor((remaining % 3600) / 60);
+    const secs = remaining % 60;
+    timerEl.textContent = `${String(hrs).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+  }
+
+  updateDisplay();
+
+  setInterval(() => {
+    remaining--;
+    if (remaining <= 0) {
+      remaining = DEFAULT_SECONDS;
+    }
+    localStorage.setItem(STORAGE_KEY, remaining.toString());
+    updateDisplay();
+  }, 1000);
+}
+
+/* ═══════════════════════════════════════════════════
+   MOBILE NAVIGATION DRAWER
+   ═══════════════════════════════════════════════════ */
+function setupMobileNav() {
+  const toggleBtn = document.getElementById('mobile-nav-toggle');
+  const drawer = document.getElementById('mobile-drawer');
+  const backdrop = document.getElementById('mobile-drawer-backdrop');
+  const closeBtn = document.getElementById('mobile-drawer-close');
+  if (!toggleBtn || !drawer || !backdrop) return;
+
+  function openDrawer() {
+    toggleBtn.classList.add('active');
+    toggleBtn.setAttribute('aria-expanded', 'true');
+    drawer.classList.add('open');
+    backdrop.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    toggleBtn.classList.remove('active');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    drawer.classList.remove('open');
+    backdrop.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    if (drawer.classList.contains('open')) {
+      closeDrawer();
+    } else {
+      openDrawer();
+    }
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  backdrop.addEventListener('click', closeDrawer);
+
+  drawer.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeDrawer);
+  });
 }

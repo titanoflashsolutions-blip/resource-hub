@@ -523,10 +523,31 @@
 @media print {
   body {
     background: #fff;
+    color: #111;
+  }
+
+  /* Suppress all non-planner website sections when printing itinerary */
+  #urgency-banner,
+  .navbar,
+  .mobile-drawer,
+  .mobile-drawer-backdrop,
+  .hero,
+  .preply-section,
+  .destination-banners,
+  #recursos,
+  #audio,
+  #quiz,
+  #piano-section,
+  #tools,
+  footer,
+  body::before {
+    display: none !important;
   }
 
   .travel-planner-container {
     background: transparent;
+    padding: 0;
+    margin: 0;
   }
 
   .travel-planner-container .planner-shell {

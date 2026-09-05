@@ -10,6 +10,10 @@
   <meta name="keywords" content="aprender coreano gratis, aprender japones pdf, aprender frances rapido, tutores preply descuento, hangul coreano, hiragana japones, frases supervivencia viaje, travel planner ia, language resource hub" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="canonical" href="https://resource-hub-seven-mu.vercel.app/" />
+  <link rel="alternate" hreflang="es" href="https://resource-hub-seven-mu.vercel.app/?lang=es" />
+  <link rel="alternate" hreflang="en" href="https://resource-hub-seven-mu.vercel.app/?lang=en" />
+  <link rel="alternate" hreflang="x-default" href="https://resource-hub-seven-mu.vercel.app/" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>" />
   <meta name="author" content="TitanoFlash Solutions" />
   <meta name="theme-color" content="#0F172A" />
 
@@ -41,12 +45,20 @@
         "@id": "https://resource-hub-seven-mu.vercel.app/#website",
         "url": "https://resource-hub-seven-mu.vercel.app/",
         "name": "Language Resource Hub 2.0",
-        "description": "Plataforma educativa con recursos gratuitos, kits de idiomas y tutores nativos de Coreano, Japonés y Francés.",
+        "description": "Plataforma educativa interactiva con recursos gratuitos, kits de idiomas y tutores nativos de Coreano, Japonés y Francés.",
         "inLanguage": ["es", "en"],
         "publisher": {
-          "@type": "Organization",
+          "@type": "EducationalOrganization",
           "name": "TitanoFlash Solutions",
           "url": "https://portfolio.titanoflashn8n.com/"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://resource-hub-seven-mu.vercel.app/?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
         }
       },
       {
@@ -58,29 +70,53 @@
         "sameAs": [
           "https://portfolio.titanoflashn8n.com/",
           "https://saludfuturo.gumroad.com/"
-        ]
+        ],
+        "description": "Recursos educativos abiertos, guías de viaje y conexión con tutores nativos certificados."
       },
       {
         "@type": "ItemList",
+        "@id": "https://resource-hub-seven-mu.vercel.app/#learning-resources",
         "name": "Kits de Idiomas y Recursos de Aprendizaje",
+        "description": "Kits descargables en PDF y guías interactivas para aprender idiomas.",
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
-            "name": "Kit Coreano Express 30 Días",
-            "url": "https://saludfuturo.gumroad.com/l/pzbjtk"
+            "item": {
+              "@type": "LearningResource",
+              "name": "Kit Coreano Express 30 Días",
+              "description": "Guía completa: Hangul + 100 frases esenciales + planificador de 30 días en PDF.",
+              "url": "https://saludfuturo.gumroad.com/l/pzbjtk",
+              "inLanguage": "es",
+              "isAccessibleForFree": true,
+              "learningResourceType": "Downloadable Guide"
+            }
           },
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "Kit Japonés Express Hiragana & Katakana",
-            "url": "https://saludfuturo.gumroad.com/l/citnbf"
+            "item": {
+              "@type": "LearningResource",
+              "name": "Kit Japonés Express Hiragana & Katakana",
+              "description": "Hiragana + Katakana + 50 frases de supervivencia en PDF.",
+              "url": "https://saludfuturo.gumroad.com/l/citnbf",
+              "inLanguage": "es",
+              "isAccessibleForFree": true,
+              "learningResourceType": "Downloadable Guide"
+            }
           },
           {
             "@type": "ListItem",
             "position": 3,
-            "name": "Kit Francés Express Vocabulario & Pronunciación",
-            "url": "https://saludfuturo.gumroad.com/l/qekjnb"
+            "item": {
+              "@type": "LearningResource",
+              "name": "Kit Francés Express Vocabulario & Pronunciación",
+              "description": "Pronunciación francesa + vocabulario clave + 50 frases reales en PDF.",
+              "url": "https://saludfuturo.gumroad.com/l/qekjnb",
+              "inLanguage": "es",
+              "isAccessibleForFree": true,
+              "learningResourceType": "Downloadable Guide"
+            }
           }
         ]
       }
@@ -88,16 +124,20 @@
   }
   </script>
 
+  <!-- ═══ FONTS PRECONNECT & STYLESHEETS ═══ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="piano.css" />
   <link rel="stylesheet" href="travel-planner.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-  <!-- ═══ GOOGLE ADSENSE ═══ -->
+  <!-- ═══ GOOGLE ADSENSE (Placeholder - Enabled when production client ID provided) ═══ -->
+  <!--
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
           crossorigin="anonymous"></script>
+  -->
 </head>
 <body>
 
@@ -127,7 +167,8 @@
       <li><a href="#recursos" data-i18n="nav_resources">Recursos</a></li>
       <li><a href="#audio"    data-i18n="nav_audio">Audio Nativo</a></li>
       <li><a href="#quiz"     data-i18n="nav_quiz">Quiz</a></li>
-      <li><a href="#piano-section">🎹 Piano</a></li>
+      <li><a href="#piano-section" data-i18n="nav_piano">🎹 Piano</a></li>
+      <li><a href="#travel-planner" data-i18n="nav_planner">✈️ Travel Planner</a></li>
       <li><a href="#tools"    data-i18n="nav_tools">🛠️ Tools</a></li>
       <li>
         <a href="https://preply.sjv.io/c/7528742/1987575/24422"
@@ -154,8 +195,42 @@
         🇺🇸 EN
       </button>
     </div>
+
+    <!-- Mobile Hamburger Toggle -->
+    <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-drawer">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
   </div>
 </nav>
+
+<!-- ═══════════════════════════════════════════════
+     MOBILE NAVIGATION DRAWER
+     ═══════════════════════════════════════════════ -->
+<div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop"></div>
+<aside class="mobile-drawer" id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Menú móvil">
+  <div class="mobile-drawer-header">
+    <div class="logo">
+      <div class="logo-icon">🌐</div>
+      <span class="logo-text">Language<span>Hub</span> 2.0</span>
+    </div>
+    <button class="mobile-drawer-close" id="mobile-drawer-close" aria-label="Cerrar menú">✕</button>
+  </div>
+  <ul class="mobile-drawer-links" role="list">
+    <li><a href="#recursos" data-i18n="nav_resources">📚 Recursos</a></li>
+    <li><a href="#audio"    data-i18n="nav_audio">🔊 Audio Nativo</a></li>
+    <li><a href="#quiz"     data-i18n="nav_quiz">🧠 Quiz</a></li>
+    <li><a href="#piano-section" data-i18n="nav_piano">🎹 Piano</a></li>
+    <li><a href="#travel-planner" data-i18n="nav_planner">✈️ Travel Planner</a></li>
+    <li><a href="#tools"    data-i18n="nav_tools">🛠️ Tools</a></li>
+    <li>
+      <a href="https://preply.sjv.io/c/7528742/1987575/24422" target="_blank" rel="noopener" class="mobile-drawer-cta" data-i18n="nav_cta">
+        🎓 Tutor Gratis
+      </a>
+    </li>
+  </ul>
+</aside>
 
 <!-- ═══════════════════════════════════════════════
      HERO SECTION
@@ -165,7 +240,7 @@
 
     <div class="hero-badge">
       <span class="dot"></span>
-      <span data-i18n="hero_badge">20 Recursos · Audio Nativo · Quiz IA · Afiliados Premium</span>
+      <span data-i18n="hero_badge">9 Recursos · Audio Nativo · Quiz IA · Afiliados Premium</span>
     </div>
 
     <h1 data-i18n="hero_h1">
@@ -208,7 +283,7 @@
         <span class="stat-label" data-i18n="stat_students">Estudiantes este mes</span>
       </div>
       <div class="stat-item">
-        <span class="stat-num" id="stat-resources">20</span>
+        <span class="stat-num" id="stat-resources">9</span>
         <span class="stat-label" data-i18n="stat_resources">Recursos curados</span>
       </div>
       <div class="stat-item">
@@ -304,11 +379,17 @@
      ═══════════════════════════════════════════════ -->
 <section class="destination-banners" aria-label="Destinos de idiomas">
   <div class="container">
+    <div class="section-header" style="text-align:center;margin-bottom:24px">
+      <h2 class="section-title">
+        <span data-i18n="dest_heading_main">Destinos</span>
+        <span style="color:var(--gold)" data-i18n="dest_heading_span">Destacados</span>
+      </h2>
+    </div>
     <div class="dest-grid">
 
       <a id="dest-card-kr" href="https://saludfuturo.gumroad.com/l/pzbjtk" target="_blank" rel="noopener"
          class="dest-card" aria-label="Coreano — Seúl">
-        <img src="assets/img/banner-kr.jpg" alt="Seúl, Corea del Sur" class="dest-img" loading="lazy" />
+        <img src="assets/img/banner-kr.jpg" alt="Aprender Coreano en Seúl — K-pop y Cultura" class="dest-img" loading="lazy" />
         <div class="dest-overlay">
           <div class="dest-flag">🇰🇷</div>
           <div class="dest-info">
@@ -321,7 +402,7 @@
 
       <a id="dest-card-jp" href="https://saludfuturo.gumroad.com/l/citnbf" target="_blank" rel="noopener"
          class="dest-card" aria-label="Japonés — Tokio">
-        <img src="assets/img/banner-jp.jpg" alt="Tokio, Japón" class="dest-img" loading="lazy" />
+        <img src="assets/img/banner-jp.jpg" alt="Aprender Japonés en Tokio — Anime y Tradición" class="dest-img" loading="lazy" />
         <div class="dest-overlay">
           <div class="dest-flag">🇯🇵</div>
           <div class="dest-info">
@@ -334,7 +415,7 @@
 
       <a id="dest-card-fr" href="https://saludfuturo.gumroad.com/l/qekjnb" target="_blank" rel="noopener"
          class="dest-card" aria-label="Francés — París">
-        <img src="assets/img/banner-fr.jpg" alt="París, Francia" class="dest-img" loading="lazy" />
+        <img src="assets/img/banner-fr.jpg" alt="Aprender Francés en París — Arte y Gastronomía" class="dest-img" loading="lazy" />
         <div class="dest-overlay">
           <div class="dest-flag">🇫🇷</div>
           <div class="dest-info">
@@ -360,7 +441,7 @@
         <span data-i18n="section_all">Todos los</span>
         <span data-i18n="section_span" style="color:var(--gold)">Recursos</span>
       </h2>
-      <span class="section-count" id="result-count">20 recursos</span>
+      <span class="section-count" id="result-count">9 recursos</span>
     </div>
 
     <div class="cards-grid" id="cards-grid" role="list" aria-label="Recursos de aprendizaje"></div>
@@ -448,6 +529,9 @@
       </div>
 
       <div class="quiz-nav" id="quiz-nav">
+        <button class="btn-quiz btn-prev" id="btn-prev" onclick="prevQuestion()" data-i18n="quiz_prev" style="display:none">
+          ← Anterior
+        </button>
         <button class="btn-quiz btn-next" id="btn-next" onclick="nextQuestion()">
           Siguiente →
         </button>
@@ -462,6 +546,15 @@
      ═══════════════════════════════════════════════ -->
 <section id="piano-section" class="section" aria-label="Piano Interactivo Multilingüe">
   <div class="container">
+    <div class="section-header" style="text-align:center;margin-bottom:24px">
+      <h2 class="section-title">
+        <span data-i18n="piano_h2_main">🎹 Piano Interactivo</span>
+        <span style="color:var(--gold)" data-i18n="piano_h2_span">Multilingüe</span>
+      </h2>
+      <p style="color:var(--text-secondary);font-size:0.95rem;margin-top:6px" data-i18n="piano_h2_sub">
+        Toca y aprende canciones tradicionales en Coreano, Japonés y Francés
+      </p>
+    </div>
     <div class="interactive-piano-container" id="pianoRoot">
 
       <!-- ── SELECTOR DE CANCIÓN POR IDIOMA ─────────────────── -->
@@ -519,6 +612,118 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════
+     AI TRAVEL PLANNER (Top-level section)
+     ═══════════════════════════════════════════════ -->
+<section id="travel-planner" class="section" aria-label="AI Travel Planner">
+  <div class="container">
+    <div class="travel-planner-container" id="travelPlannerRoot" style="margin:0;padding:0;background:transparent;border:none;box-shadow:none;">
+      <section class="planner-shell" style="border:none;background:transparent;box-shadow:none;padding:0;">
+        <header class="planner-header">
+          <div class="planner-header-copy">
+            <span class="eyebrow">✈️ AI Travel Planner 2026</span>
+            <h2 data-i18n="tp_title">Diseña tu viaje perfecto en Japón, Corea del Sur o Francia</h2>
+          </div>
+          <div class="planner-badge" data-i18n="tp_badge">Curado con IA · Experiencias reales</div>
+        </header>
+
+        <div class="planner-layout">
+          <form id="travelPlannerForm" class="planner-form">
+            <div class="form-steps">
+              <div class="step active">
+                <span>01</span>
+                <small data-i18n="tp_step1">Destino</small>
+              </div>
+              <div class="step">
+                <span>02</span>
+                <small data-i18n="tp_step2">Duración</small>
+              </div>
+              <div class="step">
+                <span>03</span>
+                <small data-i18n="tp_step3">Interés</small>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="destinationSelect" data-i18n="tp_label_dest">Destino</label>
+              <div class="select-wrap">
+                <select id="destinationSelect" name="destination">
+                  <option value="japan" data-i18n="tp_opt_jp">🇯🇵 Japón</option>
+                  <option value="korea" data-i18n="tp_opt_kr">🇰🇷 Corea del Sur</option>
+                  <option value="france" data-i18n="tp_opt_fr">🇫🇷 Francia</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="durationSelect" data-i18n="tp_label_dur">Duración</label>
+              <div class="select-wrap">
+                <select id="durationSelect" name="duration">
+                  <option value="3" data-i18n="tp_dur_3">3 Días (Express)</option>
+                  <option value="5" selected data-i18n="tp_dur_5">5 Días (Esencial)</option>
+                  <option value="7" data-i18n="tp_dur_7">7 Días (Inmersión Total)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="interestSelect" data-i18n="tp_label_int">Interés Principal</label>
+              <div class="select-wrap">
+                <select id="interestSelect" name="interest">
+                  <option value="culture" data-i18n="tp_int_culture">🏯 Cultura & Templos</option>
+                  <option value="food" data-i18n="tp_int_food">🍜 Gastronomía & Street Food</option>
+                  <option value="shopping" data-i18n="tp_int_shopping">🛍️ Compras & Moda / K-Pop & Anime</option>
+                  <option value="nature" data-i18n="tp_int_nature">🌲 Naturaleza & Paisajes</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="primary-btn" data-i18n="tp_btn_generate">
+              ⚡ Generar Mi Itinerario Personalizado
+            </button>
+          </form>
+
+          <aside class="planner-side-panel">
+            <div class="mini-card feature">
+              <span class="tag">Top picks</span>
+              <h3 data-i18n="tp_top_picks">Experiencias que encajan con tu estilo</h3>
+              <ul>
+                <li data-i18n="tp_pick1">Tour guiado, gastronomía local y skyline nocturno</li>
+                <li data-i18n="tp_pick2">Rutas inteligentes por ciudad y paisajes emblemáticos</li>
+                <li data-i18n="tp_pick3">Frases útiles para comunicarte con confianza</li>
+              </ul>
+            </div>
+
+            <div class="mini-card cta-stack">
+              <a
+                href="https://preply.sjv.io/c/7528742/1987575/24422"
+                class="gold-link"
+                target="_blank"
+                rel="noopener"
+                data-i18n="tp_cta_preply"
+              >
+                🎓 ¿Viajas pronto? Domina las frases básicas con un tutor nativo en Preply antes de tu vuelo →
+              </a>
+
+              <a
+                href="https://resource-hub-seven-mu.vercel.app/#recursos"
+                class="secondary-link"
+                target="_blank"
+                rel="noopener"
+                data-i18n="tp_cta_gumroad"
+              >
+                📥 Descarga tu Guía de Supervivencia para Viajeros en PDF Gratis →
+              </a>
+            </div>
+          </aside>
+        </div>
+
+        <div id="plannerResult" class="planner-result hidden" aria-live="polite"></div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
      UTILITY SECTION — PFP Generator + Word Counter
      ═══════════════════════════════════════════════ -->
 <section id="tools" class="section" aria-label="Herramientas Utilitarias">
@@ -558,7 +763,10 @@
           <!-- Canvas preview -->
           <div class="pfp-preview-wrap" id="pfp-preview-wrap" style="display:none">
             <canvas id="pfp-canvas" width="400" height="400"></canvas>
-            <button class="pfp-download-btn" id="pfp-download-btn" data-i18n="pfp_download">⬇️ Descargar PFP</button>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:12px">
+              <button class="pfp-download-btn" id="pfp-download-btn" data-i18n="pfp_download">⬇️ Descargar PFP</button>
+              <button type="button" class="pfp-reset-btn" id="pfp-reset-btn" data-i18n="pfp_reset">🔄 Cambiar foto / Subir otra</button>
+            </div>
           </div>
         </div>
 
@@ -624,118 +832,11 @@
         </div>
       </div>
 
-      <!-- ── AI TRAVEL PLANNER ──────────────────────── -->
-      <div class="tool-card" id="tp-tool" style="grid-column: 1 / -1;">
-        <div class="travel-planner-container" id="travelPlannerRoot" style="margin:0;padding:0;background:transparent;border:none;box-shadow:none;">
-          <section class="planner-shell" style="border:none;background:transparent;box-shadow:none;padding:0;">
-            <header class="planner-header">
-              <div class="planner-header-copy">
-                <span class="eyebrow">✈️ AI Travel Planner 2026</span>
-                <h2 data-i18n="tp_title">Diseña tu viaje perfecto en Japón, Corea del Sur o Francia</h2>
-              </div>
-              <div class="planner-badge" data-i18n="tp_badge">Curado con IA · Experiencias reales</div>
-            </header>
-
-            <div class="planner-layout">
-              <form id="travelPlannerForm" class="planner-form">
-                <div class="form-steps">
-                  <div class="step active">
-                    <span>01</span>
-                    <small data-i18n="tp_step1">Destino</small>
-                  </div>
-                  <div class="step">
-                    <span>02</span>
-                    <small data-i18n="tp_step2">Duración</small>
-                  </div>
-                  <div class="step">
-                    <span>03</span>
-                    <small data-i18n="tp_step3">Interés</small>
-                  </div>
-                </div>
-
-                <div class="field-group">
-                  <label for="destinationSelect" data-i18n="tp_label_dest">Destino</label>
-                  <div class="select-wrap">
-                    <select id="destinationSelect" name="destination">
-                      <option value="japan" data-i18n="tp_opt_jp">🇯🇵 Japón</option>
-                      <option value="korea" data-i18n="tp_opt_kr">🇰🇷 Corea del Sur</option>
-                      <option value="france" data-i18n="tp_opt_fr">🇫🇷 Francia</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="field-group">
-                  <label for="durationSelect" data-i18n="tp_label_dur">Duración</label>
-                  <div class="select-wrap">
-                    <select id="durationSelect" name="duration">
-                      <option value="3" data-i18n="tp_dur_3">3 Días (Express)</option>
-                      <option value="5" selected data-i18n="tp_dur_5">5 Días (Esencial)</option>
-                      <option value="7" data-i18n="tp_dur_7">7 Días (Inmersión Total)</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="field-group">
-                  <label for="interestSelect" data-i18n="tp_label_int">Interés Principal</label>
-                  <div class="select-wrap">
-                    <select id="interestSelect" name="interest">
-                      <option value="culture" data-i18n="tp_int_culture">🏯 Cultura & Templos</option>
-                      <option value="food" data-i18n="tp_int_food">🍜 Gastronomía & Street Food</option>
-                      <option value="shopping" data-i18n="tp_int_shopping">🛍️ Compras & Moda / K-Pop & Anime</option>
-                      <option value="nature" data-i18n="tp_int_nature">🌲 Naturaleza & Paisajes</option>
-                    </select>
-                  </div>
-                </div>
-
-                <button type="submit" class="primary-btn" data-i18n="tp_btn_generate">
-                  ⚡ Generar Mi Itinerario Personalizado
-                </button>
-              </form>
-
-              <aside class="planner-side-panel">
-                <div class="mini-card feature">
-                  <span class="tag">Top picks</span>
-                  <h3 data-i18n="tp_top_picks">Experiencias que encajan con tu estilo</h3>
-                  <ul>
-                    <li data-i18n="tp_pick1">Tour guiado, gastronomía local y skyline nocturno</li>
-                    <li data-i18n="tp_pick2">Rutas inteligentes por ciudad y paisajes emblemáticos</li>
-                    <li data-i18n="tp_pick3">Frases útiles para comunicarte con confianza</li>
-                  </ul>
-                </div>
-
-                <div class="mini-card cta-stack">
-                  <a
-                    href="https://preply.sjv.io/c/7528742/1987575/24422"
-                    class="gold-link"
-                    target="_blank"
-                    rel="noopener"
-                    data-i18n="tp_cta_preply"
-                  >
-                    🎓 ¿Viajas pronto? Domina las frases básicas con un tutor nativo en Preply antes de tu vuelo →
-                  </a>
-
-                  <a
-                    href="https://resource-hub-seven-mu.vercel.app/#recursos"
-                    class="secondary-link"
-                    target="_blank"
-                    rel="noopener"
-                    data-i18n="tp_cta_gumroad"
-                  >
-                    📥 Descarga tu Guía de Supervivencia para Viajeros en PDF Gratis →
-                  </a>
-                </div>
-              </aside>
-            </div>
-
-            <div id="plannerResult" class="planner-result hidden" aria-live="polite"></div>
-          </section>
-        </div>
-      </div>
-
     </div><!-- /tools-grid -->
 
     <!-- AdSense bloque dentro de la sección -->
     <div style="text-align:center;margin-top:32px">
+      <!-- Google AdSense Placeholder (Descomentar con Client ID real)
       <ins class="adsbygoogle"
            style="display:block"
            data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
@@ -743,6 +844,7 @@
            data-ad-format="rectangle"
            data-full-width-responsive="true"></ins>
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      -->
     </div>
 
   </div>
@@ -761,9 +863,9 @@
     </div>
     <div class="footer-links">
       <a href="https://preply.sjv.io/c/7528742/1987575/24422" target="_blank" rel="noopener">Preply</a>
-      <a href="https://saludfuturo.gumroad.com/l/pzbjtk" target="_blank" rel="noopener">Kit Coreano 🇰🇷</a>
-      <a href="https://saludfuturo.gumroad.com/l/citnbf" target="_blank" rel="noopener">Kit Japonés 🇯🇵</a>
-      <a href="https://saludfuturo.gumroad.com/l/qekjnb" target="_blank" rel="noopener">Kit Francés 🇫🇷</a>
+      <a id="footer-link-kr" href="https://saludfuturo.gumroad.com/l/pzbjtk" target="_blank" rel="noopener">Kit Coreano 🇰🇷</a>
+      <a id="footer-link-jp" href="https://saludfuturo.gumroad.com/l/citnbf" target="_blank" rel="noopener">Kit Japonés 🇯🇵</a>
+      <a id="footer-link-fr" href="https://saludfuturo.gumroad.com/l/qekjnb" target="_blank" rel="noopener">Kit Francés 🇫🇷</a>
     </div>
     <p>
       <span data-i18n="footer_copy">© 2026 Language Resource Hub 2.0</span>

@@ -64,6 +64,9 @@
 
   function getCtx() {
     if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
     return audioCtx;
   }
 
@@ -128,7 +131,11 @@
   } else {
     buildKeyboard();
   }
-  window.addEventListener('resize', buildKeyboard);
+  let resizeDebounceTimer = null;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeDebounceTimer);
+    resizeDebounceTimer = setTimeout(buildKeyboard, 150);
+  });
 
   /* ── PARTÍCULAS ───────────────────────────────────────────── */
   function burstParticles(keyEl) {
@@ -256,9 +263,10 @@
 
   /* ── EVENTOS: click / touch en teclado ────────────────────── */
   if (keyboardEl) {
-    keyboardEl.addEventListener('mousedown', (e) => {
+    keyboardEl.addEventListener('pointerdown', (e) => {
       const keyEl = e.target.closest('.piano-key');
       if (!keyEl) return;
+      e.preventDefault();
       pressKey(keyEl.dataset.note, keyEl);
     });
   }

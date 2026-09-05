@@ -1,0 +1,10 @@
+# Dependencies
+node_modules/
+
+# Agent metadata workspace (Teamwork & Antigravity)
+.agents/
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+*.log
