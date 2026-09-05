@@ -3,10 +3,91 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Language Resource Hub 2.0 — Aprende Coreano, Japonés y Francés</title>
-  <meta name="description" content="El hub definitivo para aprender idiomas. Kits gratis, tutores nativos, apps recomendadas y audio nativo. Coreano, Japonés y Francés." />
-  <meta property="og:title" content="Language Resource Hub 2.0" />
-  <meta property="og:description" content="20 recursos premium para aprender idiomas. Kits PDF gratis, tutores Preply y audio nativo." />
+  <title>Language Resource Hub 2.0 — Aprende Coreano, Japonés y Francés | Recursos Gratis & Tutores</title>
+  
+  <!-- ═══ SEO & GOOGLE DISCOVERY ═══ -->
+  <meta name="description" content="Aprende Coreano, Japonés y Francés 3x más rápido. Kits PDF gratis descargables, tutores nativos 1-a-1 en Preply con 50% DTO, audio con pronunciación nativa, quiz interactivo, piano musical y planificador de viajes con IA." />
+  <meta name="keywords" content="aprender coreano gratis, aprender japones pdf, aprender frances rapido, tutores preply descuento, hangul coreano, hiragana japones, frases supervivencia viaje, travel planner ia, language resource hub" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="canonical" href="https://resource-hub-seven-mu.vercel.app/" />
+  <meta name="author" content="TitanoFlash Solutions" />
+  <meta name="theme-color" content="#0F172A" />
+
+  <!-- ═══ OPEN GRAPH / FACEBOOK / WHATSAPP / PINTEREST ═══ -->
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://resource-hub-seven-mu.vercel.app/" />
+  <meta property="og:title" content="Language Resource Hub 2.0 — Kits Gratis & Tutores Nativos" />
+  <meta property="og:description" content="El centro definitivo para dominar Coreano, Japonés y Francés. Descarga kits en PDF gratis, practica pronunciación real y conecta con tutores certificados." />
+  <meta property="og:image" content="https://resource-hub-seven-mu.vercel.app/assets/img/thumb-preply-main.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="Language Resource Hub 2.0" />
+
+  <!-- ═══ TWITTER CARD ═══ -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Language Resource Hub 2.0 — Aprende Idiomas con IA" />
+  <meta name="twitter:description" content="Kits gratis de Coreano, Japonés y Francés en PDF + 50% de descuento en tu primera clase con tutores nativos en Preply." />
+  <meta name="twitter:image" content="https://resource-hub-seven-mu.vercel.app/assets/img/thumb-preply-main.jpg" />
+
+  <!-- ═══ STRUCTURED DATA / SCHEMA.ORG (JSON-LD) ═══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://resource-hub-seven-mu.vercel.app/#website",
+        "url": "https://resource-hub-seven-mu.vercel.app/",
+        "name": "Language Resource Hub 2.0",
+        "description": "Plataforma educativa con recursos gratuitos, kits de idiomas y tutores nativos de Coreano, Japonés y Francés.",
+        "inLanguage": ["es", "en"],
+        "publisher": {
+          "@type": "Organization",
+          "name": "TitanoFlash Solutions",
+          "url": "https://portfolio.titanoflashn8n.com/"
+        }
+      },
+      {
+        "@type": "EducationalOrganization",
+        "@id": "https://resource-hub-seven-mu.vercel.app/#organization",
+        "name": "Language Resource Hub",
+        "url": "https://resource-hub-seven-mu.vercel.app/",
+        "logo": "https://resource-hub-seven-mu.vercel.app/assets/img/thumb-preply-main.jpg",
+        "sameAs": [
+          "https://portfolio.titanoflashn8n.com/",
+          "https://saludfuturo.gumroad.com/"
+        ]
+      },
+      {
+        "@type": "ItemList",
+        "name": "Kits de Idiomas y Recursos de Aprendizaje",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Kit Coreano Express 30 Días",
+            "url": "https://saludfuturo.gumroad.com/l/pzbjtk"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Kit Japonés Express Hiragana & Katakana",
+            "url": "https://saludfuturo.gumroad.com/l/citnbf"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Kit Francés Express Vocabulario & Pronunciación",
+            "url": "https://saludfuturo.gumroad.com/l/qekjnb"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="piano.css" />
   <link rel="stylesheet" href="travel-planner.css" />
@@ -98,6 +179,15 @@
       Kits PDF gratis, apps recomendadas, tutores nativos y audio de pronunciación en vivo.
       Todo en un solo lugar. Sin paywalls ocultos.
     </p>
+
+    <!-- Interactive Search Bar -->
+    <div class="search-wrapper">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-bar"
+             placeholder="Buscar recursos, tutores, kits o idiomas..."
+             aria-label="Buscar recursos" autocomplete="off" />
+      <span class="search-kbd">Ctrl K</span>
+    </div>
 
     <!-- Filter Pills -->
     <div class="filter-section" role="group" aria-label="Filtros por idioma">

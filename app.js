@@ -488,6 +488,10 @@ document.addEventListener('DOMContentLoaded', () => {
 function switchLanguage(lang) {
   state.lang = lang;
   localStorage.setItem('hubLang', lang);
+  document.documentElement.lang = lang;
+  document.title = lang === 'es'
+    ? 'Language Resource Hub 2.0 — Aprende Coreano, Japonés y Francés | Recursos Gratis & Tutores'
+    : 'Language Resource Hub 2.0 — Learn Korean, Japanese & French | Free Kits & Tutors';
   updateLangButtons();
   applyTranslations();
   renderCards();
